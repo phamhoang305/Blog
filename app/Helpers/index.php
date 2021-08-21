@@ -590,12 +590,12 @@ function setAttrDom($post_content)
         $table->setAttribute('class',"table table-hover table-striped table-bordered table-sm");
     }
     foreach($images as $img){
-        // $src = $img->getAttribute('src');
+        $src = $img->getAttribute('src');
         $img->removeAttribute('style');
         $img->removeAttribute('height');
         $img->removeAttribute('width');
         $img->setAttribute('class',"img-fluid img-thumbnail");
-        // $img->setAttribute('src',".$src);
+        $img->setAttribute('src',asset('storage'.$src));
     }
     $dom->save();
     return $dom;
