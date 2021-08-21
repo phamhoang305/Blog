@@ -501,14 +501,14 @@ function checkDrive()
     return $thiet_bi;
 }
 function getLogo(){
-    if (\Storage::exists(setting()->logo)) {
-         return asset("storage/".setting()->logo);
+    if (\File::exists(public_path(setting()->logo))) {
+         return asset("".setting()->logo);
     }else{
         return asset("assets/images/defaults/photos-icon.png");
     }
 }
 function getIcon(){
-    if(\Storage::exists(setting()->icon)) {
+    if(\File::exists(public_path(setting()->icon))) {
         return asset("/storage/".setting()->icon);
     }else{
        return asset("/assets/images/defaults/photos-icon.png");
@@ -516,15 +516,15 @@ function getIcon(){
 }
 function img_seoImage()
 {
-    if (\Storage::exists(setting()->seoImage)){
-        return asset("storage/".setting()->seoImage);
+    if (\File::exists(public_path(setting()->seoImage))){
+        return asset("".setting()->seoImage);
     }else{
         return asset('assets/images/defaults/photos-icon.png');
     }
 }
 function img_post($path){
-    if (\Storage::exists($path)){
-        return asset("storage/{$path}");
+    if (\File::exists(public_path($path))){
+        return asset("{$path}");
     }else{
         return asset('assets/images/defaults/photos-icon.png');
     }
@@ -539,8 +539,8 @@ function img_avatar($path,$email=null)
 }
 function img_category($path)
 {
-    if (\Storage::exists($path)){
-        return asset("storage/{$path}");
+    if (\File::exists(public_path($path))){
+        return asset("{$path}");
     }else{
         return asset('/assets/images/defaults/photos-icon.png');
     }
@@ -563,7 +563,7 @@ function setAttrDom($post_content)
     $dom = HtmlDomParser::str_get_html($post_content);
     $images = $dom->getElementsByTagName('img');
     $tables = $dom->getElementsByTagName('table');
-    if(setting()->darkMode=='off'){
+    if(setting()->darkMode=='on'){
         foreach($dom->getElementsByTagName('span') as $dom_item){
             $style = $dom_item->getAttribute('style');
             $dom_item->setAttribute('style',domDarkMode($style));
@@ -590,12 +590,10 @@ function setAttrDom($post_content)
         $table->setAttribute('class',"table table-hover table-striped table-bordered table-sm");
     }
     foreach($images as $img){
-        $src = $img->getAttribute('src');
         $img->removeAttribute('style');
         $img->removeAttribute('height');
         $img->removeAttribute('width');
         $img->setAttribute('class',"img-fluid img-thumbnail");
-        $img->setAttribute('src',asset('storage'.$src));
     }
     $dom->save();
     return $dom;

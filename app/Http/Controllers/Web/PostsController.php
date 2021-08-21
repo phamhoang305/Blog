@@ -104,9 +104,9 @@ class PostsController extends Controller
         SEOMeta::addMeta('article:section',$post->cate_name, 'property');
         OpenGraph::addProperty("site_name",setting()->name);
         OpenGraph::addProperty('locale','vi');
-        if(\Storage::exists($post->post_image_max)){
-            $post_image =   asset("storage/".$post->post_image_max);
-            $image = getimagesize("storage/".$post->post_image_max);
+        if(\File::exists($post->post_image_max)){
+            $post_image =   asset($post->post_image_max);
+            $image = getimagesize($post->post_image_max);
         }else{
             $post_image = asset('assets/images/defaults/photos-icon.png');
             $image = getimagesize('assets/images/defaults/photos-icon.png');
@@ -141,9 +141,9 @@ class PostsController extends Controller
         SEOMeta::addMeta('article:section',$cate->cate_name, 'property');
         OpenGraph::addProperty("site_name",setting()->name);
         OpenGraph::addProperty('locale','vi');
-        if(\Storage::exists($cate->cate_icon)){
-            $cate->cate_icon = $cate->img =   asset("storage/".$cate->cate_icon);
-            $image = getimagesize("storage/".$cate->cate_icon);
+        if(\File::exists($cate->cate_icon)){
+            $cate->cate_icon = $cate->img =   asset($cate->cate_icon);
+            $image = getimagesize($cate->cate_icon);
         }else{
             $cate->cate_icon =  $cate->img = asset('assets/images/defaults/photos-icon.png');
             $image = getimagesize('assets/images/defaults/photos-icon.png');

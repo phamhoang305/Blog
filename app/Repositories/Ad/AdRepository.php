@@ -65,12 +65,12 @@ class AdRepository extends EloquentRepository
         $result =  Ad::find($request->id);
         $path = "/uploads/ads";
         if ($file) {
-            if (\Storage::exists($result->image)) {
-                \Storage::delete($result->image);
+            if (\File::exists($result->image)) {
+                \File::delete($result->image);
              }
              $extension = $file->getClientOriginalExtension();
              $picture   = date('Y-m-d-His').'.'.$extension;
-             \Storage::putFileAs("{$path}",$file,$picture);
+             \File::putFileAs("{$path}",$file,$picture);
              return  "{$path}/{$picture}";
         }
         return false;

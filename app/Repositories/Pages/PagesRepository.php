@@ -119,7 +119,7 @@ class PagesRepository  extends EloquentRepository
         $uniqid = $result->uniqid;
         if($result->delete()){
             Cache::forget('getPagesHeader');
-            \Storage::deleteDirectory(("/uploads/posts/".$uniqid));
+            \File::deleteDirectory(("/uploads/posts/".$uniqid));
             return true;
         }return false;
     }

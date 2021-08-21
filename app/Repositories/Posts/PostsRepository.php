@@ -529,11 +529,11 @@ class PostsRepository  extends EloquentRepository
     public function removeImage($request)
     {
         $result =  Posts::where('uniqid','=',$request->uniqid)->first();
-        if (\Storage::exists(($result->post_image_max))) {
-            \Storage::delete(($result->post_image_max));
+        if (\File::exists(($result->post_image_max))) {
+            \File::delete(($result->post_image_max));
         }
-        if (\Storage::exists(($result->post_image_min))) {
-            \Storage::delete(($result->post_image_min));
+        if (\File::exists(($result->post_image_min))) {
+            \File::delete(($result->post_image_min));
         }
     }
     public function uploadImage($request,$type)
@@ -548,8 +548,8 @@ class PostsRepository  extends EloquentRepository
                 $picture   = time().uniqid().'.'.$extension;
                 // $max = Image::make($file);
                 // $min = Image::make($file)->fit(1017,620);
-                \Storage::putFileAs("{$max_path}",$file,$picture);
-                // \Storage::putFileAs("{$min_path}",$file,$picture);
+                \File::putFileAs("{$max_path}",$file,$picture);
+                // \File::putFileAs("{$min_path}",$file,$picture);
                 $row->post_image_max ="{$max_path}/{$picture}";
                 $row->post_image_min ="{$min_path}/{$picture}";
                 return  $row;
@@ -566,8 +566,8 @@ class PostsRepository  extends EloquentRepository
                 $this->removeImage($request);
                 $extension = $file->getClientOriginalExtension();
                 $picture   =  time().uniqid().'.'.$extension;
-                \Storage::putFileAs("{$max_path}",$file,$picture);
-                // \Storage::putFileAs("{$min_path}",$file,$picture);
+                \File::putFileAs("{$max_path}",$file,$picture);
+                // \File::putFileAs("{$min_path}",$file,$picture);
                 $row->post_image_max ="{$max_path}/{$picture}";
                 $row->post_image_min ="{$min_path}/{$picture}";
                 return  $row;
@@ -589,10 +589,10 @@ class PostsRepository  extends EloquentRepository
         $images = $dom->getElementsByTagName('img');
         $arrayImage = [];
         if($type=='insert'){
-            \Storage::makeDirectory(($FOLDER));
+            \File::makeDirectory(($FOLDER));
         }else{
-            if(!\Storage::exists(($FOLDER))){
-                \Storage::makeDirectory(($FOLDER));
+            if(!\File::exists(($FOLDER))){
+                \File::makeDirectory(($FOLDER));
             }
         }
         foreach($images as $img){
@@ -602,7 +602,7 @@ class PostsRepository  extends EloquentRepository
                 $mimetype = $groups['mime'];
                 $filename = uniqid().$uniqid;
                 $filepath = "{$FOLDER}/$filename.$mimetype";
-                \Storage::putFileAs("{$filepath}",$src,$filename.".".$mimetype);
+                \File::putFileAs("{$filepath}",$src,$filename.".".$mimetype);
                 $new_src = ($filepath);
                 $img->removeAttribute('src');
                 $img->setAttribute('src', $new_src);
@@ -623,10 +623,10 @@ class PostsRepository  extends EloquentRepository
     public function removeFileImageContent($FOLDER,$arrayImage)
     {
         $path = storage_path($FOLDER);
-        $files = \Storage::allFiles($path);
+        $files = \File::allFiles($path);
         foreach($files as $item){
             if($arrayImage->contains($item->getFileName())==false){
-                \Storage::delete($item->getPathname());
+                \File::delete($item->getPathname());
             }
         }
     }
@@ -740,8 +740,8 @@ class PostsRepository  extends EloquentRepository
             Tags::where('postID','=',$post->id)->delete();
             $result = $post->delete();
             if($result){
-                if(\Storage::exists(("/uploads/thumbnails/".$uniqid))){
-                    \Storage::deleteDirectory(("/uploads/thumbnails/".$uniqid));
+                if(\File::exists(("/uploads/thumbnails/".$uniqid))){
+                    \File::deleteDirectory(("/uploads/thumbnails/".$uniqid));
                 }
             }
         }

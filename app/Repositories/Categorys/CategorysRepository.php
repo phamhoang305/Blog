@@ -97,9 +97,9 @@ class CategorysRepository extends EloquentRepository
         }
         $data = array();
         foreach ($Postcategory as $value) {
-            if (\Storage::exists($value->cate_icon)) {
+            if (\File::exists($value->cate_icon)) {
                 $value->cate_icon =asset("storage/{$value->cate_icon}");
-               
+
             }else{
                 $value->cate_icon =asset('/assets/images/defaults/photos-icon.png');
             }
@@ -158,13 +158,13 @@ class CategorysRepository extends EloquentRepository
         }
         $data = array();
         foreach ($Postcategory as $value) {
-            if (\Storage::exists($value->cate_icon)) {
+            if (\File::exists($value->cate_icon)) {
                 $value->cate_icon =asset("storage/{$value->cate_icon}");
-               
+
             }else{
                 $value->cate_icon ='/assets/images/defaults/photos-icon.png';
             }
-            
+
             $data[]=$value;
         }
         $data = array(
@@ -267,8 +267,8 @@ class CategorysRepository extends EloquentRepository
     public function deleteCategory($request = null)
     {
         $result =  Categorys::find($request->id);
-        if (\Storage::exists($result->cate_icon)) {
-            \Storage::delete($result->cate_icon);
+        if (\File::exists($result->cate_icon)) {
+            \File::delete($result->cate_icon);
         }
         if($result->delete()){
             $this->Cacheforget();
@@ -283,19 +283,19 @@ class CategorysRepository extends EloquentRepository
             if ($file) {
                 $extension = $file->getClientOriginalExtension();
                 $picture   = date('Y-m-d-His').'.'.$extension;
-                \Storage::putFileAs("{$path}",$file,$picture);
+                \File::putFileAs("{$path}",$file,$picture);
                 return  "{$path}/{$picture}";
             }
             return false;
         }else{
             $result =  Categorys::find($request->id);
             if ($file) {
-               if (\Storage::exists($result->cate_icon)) {
-                  \Storage::delete($result->cate_icon);
+               if (\File::exists($result->cate_icon)) {
+                  \File::delete($result->cate_icon);
                }
                $extension = $file->getClientOriginalExtension();
                $picture   = date('Y-m-d-His').'.'.$extension;
-               \Storage::putFileAs("{$path}",$file,$picture);
+               \File::putFileAs("{$path}",$file,$picture);
                return  "{$path}/{$picture}";
             }
             return false;

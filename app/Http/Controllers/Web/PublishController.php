@@ -32,7 +32,7 @@ class PublishController extends Controller
     }
     public function getEdit(Request $request){
         $post = $this->PostsRepository->getPostByID($request);
-        // dd(\Storage::getVisibility($post->post_image_max));
+        // dd(\File::getVisibility($post->post_image_max));
         if($post){
             SEOTools::setTitle("Cập nhật - ".$post->post_title);
             SEOTools::opengraph()->setUrl(\URL::current());

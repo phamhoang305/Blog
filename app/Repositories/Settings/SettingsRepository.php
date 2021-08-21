@@ -139,12 +139,12 @@ class SettingsRepository extends EloquentRepository
         $file  = $request->file("file_{$type}");
         $path = "/uploads/settings/{$type}";
         if ($file) {
-            if (\Storage::exists($path)) {
-                \Storage::deleteDirectory($path);
+            if (\File::exists($path)) {
+                \File::deleteDirectory($path);
             }
             $extension = $file->getClientOriginalExtension();
             $picture   = date('Y-m-d-His').'.'.$extension;
-            \Storage::putFileAs("{$path}",$file,$picture);
+            \File::putFileAs("{$path}",$file,$picture);
             return  "{$path}/{$picture}";
         }
         return false;

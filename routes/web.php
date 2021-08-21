@@ -10,21 +10,21 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/update-path', function () {
-        $posts = \DB::table('posts')->get();
-            foreach($posts as $item){
-                \DB::table('posts')->where('id','=',$item->id)->update([
-                    // 'post_image_max'=>str_replace('/uploads/_posts/max/','/uploads/thumbnails/max/',$item->post_image_max),
-                    'post_image_min'=>str_replace('/uploads/_posts/min/','/uploads/thumbnails/min/',$item->post_image_min),
-                    // 'post_content'=>str_replace('/uploads/posts/','/uploads/contents/',$item->post_content),
-                ]);
-            echo img_post($item->post_image_min)."<br>";
-        }
-});
-Route::get('storage-link', function () {
-    \Artisan::call('storage:link');
-    return redirect()->route('web.home.index');
-});
+// Route::get('/update-path', function () {
+//         $posts = \DB::table('posts')->get();
+//             foreach($posts as $item){
+//                 \DB::table('posts')->where('id','=',$item->id)->update([
+//                     // 'post_image_max'=>str_replace('/uploads/_posts/max/','/uploads/thumbnails/max/',$item->post_image_max),
+//                     'post_image_min'=>str_replace('/uploads/_posts/min/','/uploads/thumbnails/min/',$item->post_image_min),
+//                     // 'post_content'=>str_replace('/uploads/posts/','/uploads/contents/',$item->post_content),
+//                 ]);
+//             echo img_post($item->post_image_min)."<br>";
+//         }
+// });
+// Route::get('storage-link', function () {
+//     $exitCode = Artisan::call('storage:link', [] );
+//     echo $exitCode; // 0 exit code for no errors.
+// });
 Route::post("change-dark-mode","LoginController@changeDarkMode")->name('web.dark.mode');
 Route::get("forgot","LoginController@forgot")->name('web.forgot.index');
 Route::post("forgot","LoginController@postForgot")->name('web.forgot.index');

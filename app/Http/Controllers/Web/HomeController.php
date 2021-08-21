@@ -31,9 +31,9 @@ class HomeController extends Controller
         SEOMeta::addMeta('article:section',setting()->name, 'property');
         OpenGraph::addProperty("site_name",setting()->name);
         OpenGraph::addProperty('locale','vi');
-        if(\Storage::exists(setting()->seoImage)){
-            $img =   asset("storage/".setting()->seoImage);
-            $image = getimagesize("storage/".setting()->seoImage);
+        if(\File::exists(setting()->seoImage)){
+            $img =   asset(setting()->seoImage);
+            $image = getimagesize(setting()->seoImage);
         }else{
             $img = asset('assets/images/defaults/photos-icon.png');
             $image = getimagesize('assets/images/defaults/photos-icon.png');
