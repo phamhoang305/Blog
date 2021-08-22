@@ -5,7 +5,7 @@
     </div>
     <div class="card-body" id="getTags">
             @foreach (getTags(5) as $item)
-                <a href="{{ route('web.tag.post',$item->tag_slug) }}" class="btn btn-{{ raddomClass() }} m-1  btn-flat">{{ mb_strtoupper($item->tag, "UTF-8") }}</a>
+                <a href="{{ route('web.tag.post',$item->tag_slug) }}" class="btn btn-outline-{{ raddomClass() }} m-1  btn-flat">{{ mb_strtoupper($item->tag, "UTF-8") }}</a>
             @endforeach
     </div>
 </div>
