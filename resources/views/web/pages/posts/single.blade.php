@@ -28,7 +28,7 @@
                         <div class="col-lg-8 single_loadingDone" style="display: none">
                             <div class="card-detail card ">
                                 <div class="card-header">
-                                    <div class="p-2">
+                                    <div class="p-3">
                                         @include('web.formControl.top-authors',['_topAuthors'=>$user, 'headerTopAuth'=>false])
                                     </div>
                                 </div>
@@ -98,7 +98,7 @@
                                 </div>
                                 @endif
                                 @if($post->thumbnail!=NULL)
-                                    <div class="card-body p-2 text-center">
+                                    <div class="card-body p-3 text-center">
                                             <img class="img-fluid img-thumbnail" src="{{img_post($post->thumbnail)}}" alt="{{$post->post_title}}">
                                     </div>
                                 @endif
