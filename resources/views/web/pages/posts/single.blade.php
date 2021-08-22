@@ -32,12 +32,15 @@
                                         @include('web.formControl.top-authors',['_topAuthors'=>$user, 'headerTopAuth'=>false])
                                     </div>
                                 </div>
-                                <div class="card-header " style="">
-                                    <h3 style="text-align: center" class="card-title "> <img src="{{ img_category($post->cate_icon) }}"
-                                        width="25" style="border-radius: 25px" class="" alt="{{ $post->post_title }}"> {{$post->cate_name}}</h3>
+                                <div class="card-header" style="">
+                                    <h3 style="text-align: center;font-size: 12pt;" class="card-title ">
+                                        <img src="{{ img_category($post->cate_icon) }}"
+                                        width="25" style="border-radius: 25px" class="" alt="{{ $post->post_title }}">
+                                        {{$post->cate_name}}
+                                    </h3>
                                 </div>
-                                <div class="card-header " style="">
-                                    <h4 style="text-align: center" class="card-title ">  {{$post->post_title}} </h4>
+                                <div class="card-header" style="">
+                                    <h4 style="text-align: center;font-size: 12pt" class="card-title ">  {{$post->post_title}} </h4>
                                 </div>
                                 <div class="card-body p-3">
                                     <div class="post-share">
