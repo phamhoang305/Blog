@@ -549,7 +549,7 @@ function img_avatar($path,$email=null)
 }
 function img_category($path)
 {
-    if (\File::exists(public_path($path))){
+    if (\File::exists(public_path($path))&&$path!=null){
         return asset("{$path}");
     }else{
         return asset('/assets/images/defaults/photos-icon.png');
@@ -570,6 +570,7 @@ function domDarkMode($attrs)
 }
 function setAttrDom($post_content)
 {
+    return $post_content;
     $dom = HtmlDomParser::str_get_html($post_content);
     $images = $dom->getElementsByTagName('img');
     $tables = $dom->getElementsByTagName('table');

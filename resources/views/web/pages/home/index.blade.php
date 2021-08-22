@@ -15,7 +15,7 @@
 
                     </ul>
                     <div class="card-body text-center">
-                        <button class="btn bg-navy btn-block" id="button-load-more" style="display: none">Xem thêm</button>
+                        <button class="btn bg-dark btn-block" id="button-load-more" style="display: none">Xem thêm</button>
                     </div>
                     {{-- @include('web.formControl.product-list') --}}
                     @if (getAds('home_footer'))

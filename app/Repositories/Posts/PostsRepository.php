@@ -398,10 +398,8 @@ class PostsRepository  extends EloquentRepository
             $category_id =  $request->category_sub_id;
         }
         $path = $this->uploadImage($request,'update');
-        // dd($path);
-        if($path->thumbnail&&$path->post_image_min){
+        if($path->thumbnail){
             $post->thumbnail = $path->thumbnail;
-            $post->post_image_min = $path->post_image_min;
         }
         $post->category_id = $category_id;
         $post->post_slug = $this->getSlug($request,'update');
@@ -449,9 +447,8 @@ class PostsRepository  extends EloquentRepository
             $category_id =  $request->category_sub_id;
         }
         $path = $this->uploadImage($request,'insert');
-        if($path->thumbnail&&$path->post_image_min){
+        if($path->thumbnail){
             $post->thumbnail = $path->thumbnail;
-            $post->post_image_min = $path->post_image_min;
         }
         $post->category_id = $category_id;
         $post->post_slug = $this->getSlug($request,'insert');
@@ -550,10 +547,10 @@ class PostsRepository  extends EloquentRepository
                 $extension = $file->getClientOriginalExtension();
                 $picture   = date('d-m-Y')."-".time()."-".uniqid().'.'.$extension;
                 $file->move(public_path($thumbnails),$picture);
-                $row->thumbnails ="{$thumbnails}/{$picture}";
+                $row->thumbnail ="{$thumbnails}/{$picture}";
                 return  $row;
             }
-            $row->thumbnails =false;
+            $row->thumbnail =false;
             return $row;
         }else{
             if($request->is_delete.''=='1'){
@@ -564,13 +561,13 @@ class PostsRepository  extends EloquentRepository
                 $extension = $file->getClientOriginalExtension();
                 $picture   = date('d-m-Y')."-".time()."-".uniqid().'.'.$extension;
                 $file->move(public_path($thumbnails),$picture);
-                $row->thumbnails ="{$thumbnails}/{$picture}";
+                $row->thumbnail ="{$thumbnails}/{$picture}";
                 return  $row;
             }
-            $row->thumbnails =false;
+            $row->thumbnail =false;
             return $row;
         }
-        $row->thumbnails =false;
+        $row->thumbnail =false;
         return $row;
     }
     public function uploadImageContent($request,$type)

@@ -12,12 +12,6 @@ function testlist(){
     }
     this.runAction=function() {
         hljs.configure({languages: ['javascript','typescript', 'ruby', 'python','php','xml','dockerfile','css','scss','csharp','json','php-template','sql','swift']});
-        function showDarkMode() {
-            if($('body').hasClass('dark-mode')){
-                $('p').find('span').css('color','rgb(96 224 218)');
-                $('p').find('span').css('color','whitesmoke');
-            }
-        }
         function getData(){
             var array = [];
             $(".item-parent-data").each(function(index,item){
@@ -147,7 +141,7 @@ function testlist(){
             });
             html+='</div>';
             $("#renderHtmlTestItemDetai").html(html);
-            showDarkMode();
+            contentDarkMode();
         }
         $(document).delegate(".btn-test","click",function(){
                 var r = confirm("Bạn có muốn làm bài không ?");
@@ -190,7 +184,7 @@ function testlist(){
             }
         });
         $(document).ready(function() {
-            showDarkMode();
+            contentDarkMode();
         });
     }
     this.countdown=function(){

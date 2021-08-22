@@ -543,8 +543,11 @@ i.icon {
     justify-content: space-between;
     margin-top: 24px;
 }
+.product-info a{
+    color: #ffffff;
+    font-size: 10pt;
+}
 .dark-mode .product-info a{
-
     color: #ffffff;
 }
 .dark-mode .username a{

@@ -39,7 +39,7 @@
                                 <div class="card-header " style="">
                                     <h4 style="text-align: center" class="card-title ">  {{$post->post_title}} </h4>
                                 </div>
-                                <div class="card-body p-2">
+                                <div class="card-body p-3">
                                     <div class="post-share">
                                         <ul class="share-box">
                                         <li class="share-li-lg">
@@ -88,7 +88,7 @@
                                     </div>
                                 </div>
                                 @if ($post->post_des)
-                                <div class="card-body p-2">
+                                <div class="card-body p-3">
                                     <div class="post-content">
                                         {{$post->post_des}}
                                     </div>
@@ -99,7 +99,7 @@
                                             <img class="img-fluid img-thumbnail" src="{{img_post($post->thumbnail)}}" alt="{{$post->post_title}}">
                                     </div>
                                 @endif
-                                <div class="card-body ">
+                                <div class="card-body p-3">
                                     @if (getAds('sidbar_header'))
                                     <div class="form-group">
                                         {!! getAds('post_header') !!}

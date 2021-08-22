@@ -821,4 +821,26 @@ function randomUuidv4(){return([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g,t=>(
 function uuid(){
     return `${randomUuidv4()}-${Math.round(new Date().getTime() / 1000)}`;
 }
-
+function contentDarkMode() {
+    if($('body').hasClass('dark-mode')){
+        $('.post-content').find('a').css('color','rgb(96 224 218)');
+        $('.post-content').find('p').css('color','whitesmoke');
+        $('.post-content').find('p,h1,h2,h3,h4,h5,h6,ul,li').css('color','whitesmoke');
+        $('.post-content').find('p span').css('color','whitesmoke');
+        $('.post-content').find('p font').css('color','whitesmoke');
+        $('.post-content').find('p,h1 span,h2 span,h3 span,h4 span,h5 span,h6 span,ul,li').css('color','whitesmoke');
+        $('.post-content').find('table').removeAttr('style');
+        $('.post-content').find('table').addClass('table hover table-bordered table-hover table-sm table-striped w-100');
+        $('.post-content').find('table tr').removeAttr('style');
+        $('.post-content').find('table tr th').removeAttr('style');
+        $('.post-content').find('table tr td').removeAttr('style');
+        $('.post-content').find('table tr').css('color','whitesmoke');
+        $('.post-content').find('table tr th').css('color','whitesmoke');
+        $('.post-content').find('table tr td').css('color','whitesmoke');
+        $('.post-content').find('table th span').css('color','whitesmoke');
+        $('.post-content').find('table td span').css('color','whitesmoke');
+        $('.post-content').find('table td p').css('color','whitesmoke');
+        $('.post-content').find('table td p font').css('color','whitesmoke');
+        $('.post-content').find('pre').css('background-color','#121416;');
+    }
+}
