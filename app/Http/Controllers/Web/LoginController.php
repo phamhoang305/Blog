@@ -37,7 +37,7 @@ class LoginController extends Controller
         SEOMeta::addMeta('article:section',setting()->name, 'property');
         OpenGraph::addProperty("site_name",setting()->name);
         OpenGraph::addProperty('locale','vi');
-        if(\File::exists(public_path(setting()->seoImage))){
+        if(\File::exists(public_path(setting()->seoImage))&&setting()->seoImage!=null){
             $img =   asset(setting()->seoImage);
             $image = getimagesize(public_path(setting()->seoImage));
         }else{

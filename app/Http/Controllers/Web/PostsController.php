@@ -104,13 +104,14 @@ class PostsController extends Controller
         SEOMeta::addMeta('article:section',$post->cate_name, 'property');
         OpenGraph::addProperty("site_name",setting()->name);
         OpenGraph::addProperty('locale','vi');
-        if(\File::exists(public_path($post->thumbnail))){
+        if(\File::exists(public_path($post->thumbnail)&&$post->thumbnail!=null)){
             $post_image =   asset($post->thumbnail);
             $image = getimagesize(public_path($post->thumbnail));
         }else{
             $post_image = asset('assets/images/defaults/photos-icon.png');
             $image = getimagesize(public_path('assets/images/defaults/photos-icon.png'));
         }
+
         $post->img = $post_image;
         OpenGraph::addProperty('image',($post->img));
         OpenGraph::addProperty('image:secure_url',($post->img));
@@ -141,7 +142,7 @@ class PostsController extends Controller
         SEOMeta::addMeta('article:section',$cate->cate_name, 'property');
         OpenGraph::addProperty("site_name",setting()->name);
         OpenGraph::addProperty('locale','vi');
-        if(\File::exists(public_path($cate->cate_icon))){
+        if(\File::exists(public_path($cate->cate_icon))&&$cate->cate_icon!=null){
             $cate->cate_icon = $cate->img =   asset($cate->cate_icon);
             $image = getimagesize(public_path($cate->cate_icon));
         }else{
@@ -175,7 +176,7 @@ class PostsController extends Controller
         SEOMeta::addMeta('article:section',setting()->name, 'property');
         OpenGraph::addProperty("site_name",setting()->name);
         OpenGraph::addProperty('locale','vi');
-        if(\File::exists(public_path(setting()->seoImage))){
+        if(\File::exists(public_path(setting()->seoImage))&&setting()->seoImage!=null){
             $img =   asset(setting()->seoImage);
             $image = getimagesize(public_path(setting()->seoImage));
         }else{

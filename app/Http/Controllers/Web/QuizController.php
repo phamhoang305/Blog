@@ -21,7 +21,7 @@ class QuizController extends Controller
         SEOTools::opengraph()->setUrl(\URL::current());
         SEOTools::setDescription("Luyện thi trắc nghiệm trực tuyến, trắc nghiệm online, thi thử trắc nghiệm trực tuyến online các môn");
         OpenGraph::addProperty('locale','vi');
-        $path = '/uploads/defaults/test.png';
+        $path = '/assets/images/defaults/test.png';
         if(\File::exists(public_path($path))){
             OpenGraph::addProperty('image',asset($path));
             OpenGraph::addProperty('image:secure_url',asset($path));
@@ -46,7 +46,7 @@ class QuizController extends Controller
             SEOTools::setDescription("{$category->des}");
             SEOTools::opengraph()->setUrl(\URL::current());
             OpenGraph::addProperty('locale','vi');
-            $path = '/uploads/defaults/test.png';
+            $path = '/assets/images/defaults/test.png';
             if(\File::exists(public_path($path))){
                 OpenGraph::addProperty('image',asset($path));
                 OpenGraph::addProperty('image:secure_url',asset($path));
@@ -93,7 +93,7 @@ class QuizController extends Controller
             SEOMeta::addMeta('article:section',$info->name, 'property');
             OpenGraph::addProperty("site_name",$info->name);
             OpenGraph::addProperty('locale','vi');
-            $path = '/uploads/defaults/test.png';
+            $path = '/assets/images/defaults/test.png';
             if(\File::exists(public_path($path))){
                 OpenGraph::addProperty('image',asset($path));
                 OpenGraph::addProperty('image:secure_url',asset($path));
