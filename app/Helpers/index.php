@@ -500,30 +500,40 @@ function checkDrive()
     }
     return $thiet_bi;
 }
+function getNameFile($fullPath)
+{
+    $fullPath = explode(";",$fullPath);
+    if(count($fullPath)>1){
+       return $fullPath[0];
+    }else{
+        return $fullPath[count($fullPath)-1];
+    }
+}
 function getLogo(){
-    if (\File::exists(public_path(setting()->logo))) {
-         return asset("".setting()->logo);
+    if (\File::exists(public_path(setting()->logo))&&setting()->logo!=null){
+         return asset(setting()->logo);
     }else{
         return asset("assets/images/defaults/photos-icon.png");
     }
 }
 function getIcon(){
-    if(\File::exists(public_path(setting()->icon))) {
-        return asset("/storage/".setting()->icon);
+    if(\File::exists(public_path(setting()->icon))&&setting()->icon!=null){
+        return asset(setting()->icon);
     }else{
        return asset("/assets/images/defaults/photos-icon.png");
     }
 }
 function img_seoImage()
 {
-    if (\File::exists(public_path(setting()->seoImage))){
-        return asset("".setting()->seoImage);
+    if (\File::exists(public_path(setting()->seoImage))&&setting()->seoImage!=null){
+        return asset(setting()->seoImage);
     }else{
         return asset('assets/images/defaults/photos-icon.png');
     }
 }
 function img_post($path){
-    if (\File::exists(public_path($path))){
+
+    if (\File::exists(public_path($path))&&$path!=null){
         return asset("{$path}");
     }else{
         return asset('assets/images/defaults/photos-icon.png');

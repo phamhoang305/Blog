@@ -94,9 +94,9 @@
                                     </div>
                                 </div>
                                 @endif
-                                @if($post->post_image_max!=NULL)
+                                @if($post->thumbnail!=NULL)
                                     <div class="card-body p-2 text-center">
-                                            <img class="img-fluid img-thumbnail" src="{{img_post($post->post_image_max)}}" alt="{{$post->post_title}}">
+                                            <img class="img-fluid img-thumbnail" src="{{img_post($post->thumbnail)}}" alt="{{$post->post_title}}">
                                     </div>
                                 @endif
                                 <div class="card-body ">

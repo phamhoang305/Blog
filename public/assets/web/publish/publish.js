@@ -139,17 +139,19 @@ function publish(){
         $(document).ready(function(){
             if(datas.editor=='quill'){
                 setQuill();
-            }else{
+            }else if(datas.editor=="tinymce"){
                 setTinymce();
+            }else{
+                datas.editor = "quill";
+                setQuill();
             }
             $("#editor").on('change',function(params) {
                 var type = $(this).val();
                 datas.editor = type;
-                console.log(datas.editor);
                 if(type=='quill'){
                     tinymce.remove("#post_content");
                     setQuill();
-                }else{
+                }else if(type=="tinymce"){
                     destory_editor("#post_content");
                     setTinymce();
                 }

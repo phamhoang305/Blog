@@ -21,7 +21,7 @@
                             </div>
                             <div class="card-detail card">
                                 <div class="card-header " style="">
-                                    <h3 style="text-align: center" class="card-title "> <img src="{{ $post->cate_icon }}" width="25" style="border-radius: 25px" class="" alt="{{ $post->post_title }}"> {{$post->cate_name}}</h3>
+                                    <h3 style="text-align: center" class="card-title "> <img src="{{ img_category($post->cate_icon) }}" width="25" style="border-radius: 25px" class="" alt="{{ $post->post_title }}"> {{$post->cate_name}}</h3>
                                 </div>
                                 <div class="card-header " style="">
                                     <h3 style="text-align: center" class="card-title "> <b>  {{$post->post_title}} </b></h3>

@@ -17,9 +17,7 @@
             </div>
                 <!-- /.card-header -->
             <div class="card-body " >
-                    <div class="form-group">
-                        <img width="100%" src="{{getLogo()}}" alt="{{setting()->name}}"/>
-                    </div>
+
                     <div id="alertJS">
                         @if (session('status'))
                         <div class="alert alert-warning text-small alert-dismissible" role="alert"> <i class="icon fas fa-exclamation-triangle"></i> {{session('status')}}

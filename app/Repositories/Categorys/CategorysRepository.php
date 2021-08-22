@@ -97,11 +97,11 @@ class CategorysRepository extends EloquentRepository
         }
         $data = array();
         foreach ($Postcategory as $value) {
-            if (\File::exists($value->cate_icon)) {
-                $value->cate_icon =asset("storage/{$value->cate_icon}");
+            if (\File::exists(public_path($value->cate_icon))) {
+                $value->cate_icon =asset("{$value->cate_icon}");
 
             }else{
-                $value->cate_icon =asset('/assets/images/defaults/photos-icon.png');
+                $value->cate_icon =asset('assets/images/defaults/photos-icon.png');
             }
             $data[]=$value;
         }
@@ -158,11 +158,11 @@ class CategorysRepository extends EloquentRepository
         }
         $data = array();
         foreach ($Postcategory as $value) {
-            if (\File::exists($value->cate_icon)) {
-                $value->cate_icon =asset("storage/{$value->cate_icon}");
+            if (\File::exists(public_path($value->cate_icon))) {
+                $value->cate_icon =asset("{$value->cate_icon}");
 
             }else{
-                $value->cate_icon ='/assets/images/defaults/photos-icon.png';
+                $value->cate_icon =asset('/assets/images/defaults/photos-icon.png');
             }
 
             $data[]=$value;
@@ -267,8 +267,8 @@ class CategorysRepository extends EloquentRepository
     public function deleteCategory($request = null)
     {
         $result =  Categorys::find($request->id);
-        if (\File::exists($result->cate_icon)) {
-            \File::delete($result->cate_icon);
+        if (\File::exists(public_path($result->cate_icon))) {
+            \File::delete(public_path($result->cate_icon));
         }
         if($result->delete()){
             $this->Cacheforget();
@@ -283,19 +283,19 @@ class CategorysRepository extends EloquentRepository
             if ($file) {
                 $extension = $file->getClientOriginalExtension();
                 $picture   = date('Y-m-d-His').'.'.$extension;
-                \File::putFileAs("{$path}",$file,$picture);
+                $file->move(public_path($path),$picture);
                 return  "{$path}/{$picture}";
             }
             return false;
         }else{
             $result =  Categorys::find($request->id);
             if ($file) {
-               if (\File::exists($result->cate_icon)) {
-                  \File::delete($result->cate_icon);
+               if (\File::exists(public_path($result->cate_icon))) {
+                  \File::delete(public_path($result->cate_icon));
                }
                $extension = $file->getClientOriginalExtension();
                $picture   = date('Y-m-d-His').'.'.$extension;
-               \File::putFileAs("{$path}",$file,$picture);
+               $file->move(public_path($path),$picture);
                return  "{$path}/{$picture}";
             }
             return false;

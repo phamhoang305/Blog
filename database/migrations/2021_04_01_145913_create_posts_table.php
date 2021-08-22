@@ -22,8 +22,7 @@ class CreatePostsTable extends Migration
                 $table->unsignedBigInteger('category_id')->nullable();
                 $table->foreign('category_id')->references('id')->on('categorys')->onUpdate('cascade');
                 $table->string("post_view_type")->nullable()->default('POST');
-                $table->string('post_image_max')->nullable();
-                $table->string('post_image_min')->nullable();
+                $table->string('thumbnail')->nullable();
                 $table->longText('post_title')->nullable();
                 $table->longText('post_slug')->nullable();
                 $table->longText('post_keywords')->nullable();

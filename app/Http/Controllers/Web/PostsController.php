@@ -104,12 +104,12 @@ class PostsController extends Controller
         SEOMeta::addMeta('article:section',$post->cate_name, 'property');
         OpenGraph::addProperty("site_name",setting()->name);
         OpenGraph::addProperty('locale','vi');
-        if(\File::exists($post->post_image_max)){
-            $post_image =   asset($post->post_image_max);
-            $image = getimagesize($post->post_image_max);
+        if(\File::exists(public_path($post->thumbnail))){
+            $post_image =   asset($post->thumbnail);
+            $image = getimagesize(public_path($post->thumbnail));
         }else{
             $post_image = asset('assets/images/defaults/photos-icon.png');
-            $image = getimagesize('assets/images/defaults/photos-icon.png');
+            $image = getimagesize(public_path('assets/images/defaults/photos-icon.png'));
         }
         $post->img = $post_image;
         OpenGraph::addProperty('image',($post->img));
@@ -141,12 +141,12 @@ class PostsController extends Controller
         SEOMeta::addMeta('article:section',$cate->cate_name, 'property');
         OpenGraph::addProperty("site_name",setting()->name);
         OpenGraph::addProperty('locale','vi');
-        if(\File::exists($cate->cate_icon)){
+        if(\File::exists(public_path($cate->cate_icon))){
             $cate->cate_icon = $cate->img =   asset($cate->cate_icon);
-            $image = getimagesize($cate->cate_icon);
+            $image = getimagesize(public_path($cate->cate_icon));
         }else{
             $cate->cate_icon =  $cate->img = asset('assets/images/defaults/photos-icon.png');
-            $image = getimagesize('assets/images/defaults/photos-icon.png');
+            $image = getimagesize(public_path('assets/images/defaults/photos-icon.png'));
         }
         OpenGraph::addProperty('image',($cate->img));
         OpenGraph::addProperty('image:secure_url',($cate->img));
@@ -176,7 +176,7 @@ class PostsController extends Controller
         OpenGraph::addProperty("site_name",setting()->name);
         OpenGraph::addProperty('locale','vi');
         $post_image = asset('assets/images/defaults/single.png');
-        $image = getimagesize('assets/images/defaults/single.png');
+        $image = getimagesize(public_path('assets/images/defaults/photos-icon.png'));
         $post->img = $post_image;
         OpenGraph::addProperty('image',asset($post->img));
         OpenGraph::addProperty('image:secure_url',asset($post->img));

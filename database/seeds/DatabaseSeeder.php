@@ -11,16 +11,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        if(\Storage::exists(("uploads"))){
-            \Storage::deleteDirectory(("uploads"));
+        if(\File::exists(public_path("uploads"))){
+            \File::deleteDirectory(public_path("uploads"));
         }
-        \Storage::makeDirectory(("uploads"));
-        \Storage::makeDirectory(("uploads/thumbnails"));
-        \Storage::makeDirectory(("uploads/contents"));
-        \Storage::makeDirectory(("uploads/thumbnails/min"));
-        \Storage::makeDirectory(("uploads/thumbnails/max"));
-        \Storage::makeDirectory(("uploads/settings"));
-        \Storage::makeDirectory(("uploads/ads"));
+        \File::makeDirectory(public_path("uploads"));
+        \File::makeDirectory(public_path("uploads/thumbnails"));
+        \File::makeDirectory(public_path("uploads/contents"));
+        \File::makeDirectory(public_path("uploads/settings"));
+        \File::makeDirectory(public_path("uploads/ads"));
         $this->call(
             [
                 AdSpacesTableSeeder::class,
@@ -28,7 +26,7 @@ class DatabaseSeeder extends Seeder
                 SettingsTableSeeder::class,
                 UsersTableSeeder::class,
                 CategorysTableSeeder::class,
-                // PostsTableSeeder::class,
+                PostsTableSeeder::class,
                 // TagsTableSeeder::class,
                 // FollowsTableSeeder::class,
                 // TestCategoryTableSeeder::class

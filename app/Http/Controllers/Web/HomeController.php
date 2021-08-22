@@ -31,12 +31,12 @@ class HomeController extends Controller
         SEOMeta::addMeta('article:section',setting()->name, 'property');
         OpenGraph::addProperty("site_name",setting()->name);
         OpenGraph::addProperty('locale','vi');
-        if(\File::exists(setting()->seoImage)){
+        if(\File::exists(public_path(setting()->seoImage))){
             $img =   asset(setting()->seoImage);
-            $image = getimagesize(setting()->seoImage);
+            $image = getimagesize(public_path(setting()->seoImage));
         }else{
             $img = asset('assets/images/defaults/photos-icon.png');
-            $image = getimagesize('assets/images/defaults/photos-icon.png');
+            $image = getimagesize(public_path('assets/images/defaults/photos-icon.png'));
         }
         OpenGraph::addProperty('image',($img));
         OpenGraph::addProperty('image:secure_url',($img));

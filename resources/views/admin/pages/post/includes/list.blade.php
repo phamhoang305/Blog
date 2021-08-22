@@ -61,9 +61,9 @@
                         if($item->avatar==''){
                             $item->avatar = "https://www.gravatar.com/avatar/".md5($item->email)."jpg?s=64";
                         }
-                        if($item->post_image_max!=NULL){
-                            if ( file_exists(public_path($item->post_image_max))&&$item->post_image_max!=""){
-                                $post_image = $item->post_image_max;
+                        if($item->thumbnail!=NULL){
+                            if ( file_exists(public_path($item->thumbnail))&&$item->thumbnail!=""){
+                                $post_image = $item->thumbnail;
                             }else{
                                 $post_image = asset('assets/images/defaults/photos-icon.png');
                             }

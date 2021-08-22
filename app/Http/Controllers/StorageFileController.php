@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use File;
 class StorageFileController extends Controller
 {
-    public function storgeFile($filename)
+    public function storgeFilePost($filename)
     {
         $decrypted_string = \Illuminate\Support\Facades\Crypt::decrypt($filename);
         $path = storage_path("app/public/{$decrypted_string}");
@@ -14,9 +14,7 @@ class StorageFileController extends Controller
         $file = File::get($path);
         $type = File::mimeType($path);
         $response = \Response::make($file, 200);
-
         $response->header("Content-Type", $type);
-
         return $response;
 
     }

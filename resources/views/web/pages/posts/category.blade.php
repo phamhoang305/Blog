@@ -8,7 +8,7 @@
                         <div class="col-lg-8">
                             <div class="card">
                                 <div class="card-header ">
-                                    <h3 style="text-align: center" class="card-title "> <img src="{{ $cate->cate_icon }}" width="25" style="border-radius: 25px" class="" alt="{{ $cate->cate_name }}"> {{$cate->cate_name}}</h3>
+                                    <h3 style="text-align: center" class="card-title "> <img src="{{ img_category($cate->cate_icon) }}" width="25" style="border-radius: 25px" class="" alt="{{ $cate->cate_name }}"> {{$cate->cate_name}}</h3>
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body">

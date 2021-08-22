@@ -14,9 +14,9 @@
         // }else{
         //     $url = route('web.posts.index',[$item->cate_slug,$item->post_slug]);
         // }
-        if($item->post_image_max!=NULL){
-            if ( file_exists(public_path($item->post_image_max))&&$item->post_image_max!=""){
-                $post_image = $item->post_image_max;
+        if($item->thumbnail!=NULL){
+            if ( file_exists(public_path($item->thumbnail))&&$item->thumbnail!=""){
+                $post_image = $item->thumbnail;
             }else{
                 $post_image = asset('assets/images/defaults/photos-icon.png');
             }

@@ -1,12 +1,10 @@
 @php
-$image=asset('assets/images/defaults/photos-icon.png');
-$is_delete=false;
+    $image= img_post($post->thumbnail);
+    $is_delete=false;
+    if (\File::exists(public_path($post->thumbnail))){
+        $is_delete = true;
+    }
 @endphp
-@if ($post->post_image_max!=NULL)
-    @if ( Storage::exists($post->post_image_max)&&$post->post_image_max!="")
-        @php $image=storgeFile($post->post_image_max); $is_delete = true; @endphp
-    @endif
-@endif
 <form  value="{{$post->uniqid}}" action="{{$type=='update'?route('web.publish.edit'):route('web.publish.add')}}" id="formAction" name="uniqid">
     <input type="hidden" id="defaults-image" value="{{asset('assets/images/defaults/photos-icon.png')}}"/>
     <div class="row">

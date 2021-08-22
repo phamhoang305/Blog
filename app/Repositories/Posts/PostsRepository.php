@@ -20,8 +20,7 @@ class PostsRepository  extends EloquentRepository
     protected $fillable =[
         'id',
         'uniqid',
-        'post_image_max',
-        'post_image_min',
+        'thumbnail',
         'post_title',
         'post_slug',
         'post_view',
@@ -68,6 +67,7 @@ class PostsRepository  extends EloquentRepository
             ->where('cate_slug','=',$cate_slug)
             ->where('post_status','=','published')
             ->where('post_status_admin','=','published')
+            ->where('post_trash','=',NULL)
             ->limit($limit)
             ->orderBy('created_at','desc')
             ->select($this->fillable)
@@ -82,6 +82,7 @@ class PostsRepository  extends EloquentRepository
                 ->where('post_approve','=',NULL)
                 ->where('post_status','=','published')
                 ->where('post_status_admin','=','published')
+                ->where('post_trash','=',NULL)
                 ->limit($limit)
                 ->select($this->fillable)
                 ->orderBy('post_view','desc')
@@ -96,6 +97,7 @@ class PostsRepository  extends EloquentRepository
             ->where('post_status','=','published')
             ->where('post_status_admin','=','published')
             ->where('post_approve','=',NULL)
+            ->where('post_trash','=',NULL)
             ->select($this->fillable)
             ->inRandomOrder()->take($limit)->get();
         });
@@ -109,6 +111,7 @@ class PostsRepository  extends EloquentRepository
             ->where('post_status','=','published')
             ->where('post_status_admin','=','published')
             ->where('post_approve','=',NULL)
+            ->where('post_trash','=',NULL)
             ->limit($limit)
             ->select($this->fillable)
             ->get();
@@ -122,6 +125,7 @@ class PostsRepository  extends EloquentRepository
             ->where('post_status','=','published')
             ->where('post_status_admin','=','published')
             ->where('post_approve','=',NULL)
+            ->where('post_trash','=',NULL)
             ->select($this->fillable)
             ->paginate(setting()->post_page_number);
             return $result;
@@ -136,6 +140,7 @@ class PostsRepository  extends EloquentRepository
                 ->where('post_status','=','published')
                 ->where('post_status_admin','=','published')
                 ->where('post_approve','=',NULL)
+                ->where('post_trash','=',NULL)
                 ->orderBy('created_at','desc')
                 ->select($this->fillable)
                 ->paginate(setting()->post_page_number);
@@ -146,6 +151,7 @@ class PostsRepository  extends EloquentRepository
                 ->where('post_status','=','published')
                 ->where('post_status_admin','=','published')
                 ->where('post_approve','=',NULL)
+                ->where('post_trash','=',NULL)
                 ->orderBy('created_at','desc')
                 ->select($this->fillable)
                 ->paginate(setting()->post_page_number);
@@ -158,6 +164,7 @@ class PostsRepository  extends EloquentRepository
             ->where('post_status','=','published')
             ->where('post_status_admin','=','published')
             ->where('post_approve','=',NULL)
+            ->where('post_trash','=',NULL)
             ->orderBy('created_at','desc')
             ->select($this->fillable)
             ->paginate(setting()->post_page_number);
@@ -392,8 +399,8 @@ class PostsRepository  extends EloquentRepository
         }
         $path = $this->uploadImage($request,'update');
         // dd($path);
-        if($path->post_image_max&&$path->post_image_min){
-            $post->post_image_max = $path->post_image_max;
+        if($path->thumbnail&&$path->post_image_min){
+            $post->thumbnail = $path->thumbnail;
             $post->post_image_min = $path->post_image_min;
         }
         $post->category_id = $category_id;
@@ -442,8 +449,8 @@ class PostsRepository  extends EloquentRepository
             $category_id =  $request->category_sub_id;
         }
         $path = $this->uploadImage($request,'insert');
-        if($path->post_image_max&&$path->post_image_min){
-            $post->post_image_max = $path->post_image_max;
+        if($path->thumbnail&&$path->post_image_min){
+            $post->thumbnail = $path->thumbnail;
             $post->post_image_min = $path->post_image_min;
         }
         $post->category_id = $category_id;
@@ -529,34 +536,24 @@ class PostsRepository  extends EloquentRepository
     public function removeImage($request)
     {
         $result =  Posts::where('uniqid','=',$request->uniqid)->first();
-        if (\File::exists(($result->post_image_max))) {
-            \File::delete(($result->post_image_max));
-        }
-        if (\File::exists(($result->post_image_min))) {
-            \File::delete(($result->post_image_min));
+        if (\File::exists(public_path(($result->thumbnail)))) {
+            \File::delete(public_path(($result->thumbnail)));
         }
     }
     public function uploadImage($request,$type)
     {
         $row = new \stdClass;
-        $max_path  = "/uploads/thumbnails/max";
-        $min_path  = "/uploads/thumbnails/min";
+        $thumbnails  = "/uploads/thumbnails/max";
         $file      = $request->file('file_post_image');
         if($type=='insert'){
             if ($file) {
                 $extension = $file->getClientOriginalExtension();
-                $picture   = time().uniqid().'.'.$extension;
-                // $max = Image::make($file);
-                // $min = Image::make($file)->fit(1017,620);
-                \File::putFileAs("{$max_path}",$file,$picture);
-                // \File::putFileAs("{$min_path}",$file,$picture);
-                $row->post_image_max ="{$max_path}/{$picture}";
-                $row->post_image_min ="{$min_path}/{$picture}";
+                $picture   = date('d-m-Y')."-".time()."-".uniqid().'.'.$extension;
+                $file->move(public_path($thumbnails),$picture);
+                $row->thumbnails ="{$thumbnails}/{$picture}";
                 return  $row;
             }
-            $row->post_image_max =false;
-            $row->post_image_min =false;
-
+            $row->thumbnails =false;
             return $row;
         }else{
             if($request->is_delete.''=='1'){
@@ -565,19 +562,15 @@ class PostsRepository  extends EloquentRepository
             if ($file) {
                 $this->removeImage($request);
                 $extension = $file->getClientOriginalExtension();
-                $picture   =  time().uniqid().'.'.$extension;
-                \File::putFileAs("{$max_path}",$file,$picture);
-                // \File::putFileAs("{$min_path}",$file,$picture);
-                $row->post_image_max ="{$max_path}/{$picture}";
-                $row->post_image_min ="{$min_path}/{$picture}";
+                $picture   = date('d-m-Y')."-".time()."-".uniqid().'.'.$extension;
+                $file->move(public_path($thumbnails),$picture);
+                $row->thumbnails ="{$thumbnails}/{$picture}";
                 return  $row;
             }
-            $row->post_image_max =false;
-            $row->post_image_min =false;
+            $row->thumbnails =false;
             return $row;
         }
-        $row->post_image_max =false;
-        $row->post_image_min =false;
+        $row->thumbnails =false;
         return $row;
     }
     public function uploadImageContent($request,$type)
@@ -589,24 +582,24 @@ class PostsRepository  extends EloquentRepository
         $images = $dom->getElementsByTagName('img');
         $arrayImage = [];
         if($type=='insert'){
-            \File::makeDirectory(($FOLDER));
+            \File::makeDirectory(public_path($FOLDER));
         }else{
-            if(!\File::exists(($FOLDER))){
-                \File::makeDirectory(($FOLDER));
+            if(!\File::exists(public_path($FOLDER))){
+                \File::makeDirectory(public_path($FOLDER));
             }
         }
         foreach($images as $img){
             $src = $img->getAttribute('src');
             if(preg_match('/data:image/', $src)){
                 preg_match('/data:image\/(?<mime>.*?)\;/', $src, $groups);
-                $mimetype = $groups['mime'];
-                $filename = uniqid().$uniqid;
-                $filepath = "{$FOLDER}/$filename.$mimetype";
-                \File::putFileAs("{$filepath}",$src,$filename.".".$mimetype);
+                $extension = $groups['mime'];
+                $filename = date('d-m-Y')."-".time()."-".uniqid().'.'.$extension;
+                $filepath = "{$FOLDER}/$filename";
+                Image::make($src)->save(public_path($filepath));
                 $new_src = ($filepath);
                 $img->removeAttribute('src');
                 $img->setAttribute('src', $new_src);
-                $arrayImage[] = $filename.".".$mimetype;
+                $arrayImage[] = $filename;
             }else{
                 if($src!=""){
                     $src = explode("/",$src);
@@ -622,11 +615,11 @@ class PostsRepository  extends EloquentRepository
     }
     public function removeFileImageContent($FOLDER,$arrayImage)
     {
-        $path = storage_path($FOLDER);
+        $path = public_path($FOLDER);
         $files = \File::allFiles($path);
         foreach($files as $item){
             if($arrayImage->contains($item->getFileName())==false){
-                \File::delete($item->getPathname());
+                \File::delete(($item->getPathname()));
             }
         }
     }
@@ -738,12 +731,15 @@ class PostsRepository  extends EloquentRepository
             }
             $post =  Posts::where('uniqid','=',$uniqid)->first();
             Tags::where('postID','=',$post->id)->delete();
-            $result = $post->delete();
-            if($result){
-                if(\File::exists(("/uploads/thumbnails/".$uniqid))){
-                    \File::deleteDirectory(("/uploads/thumbnails/".$uniqid));
+            if($post){
+                if(\File::exists(public_path($post->thumbnail))){
+                    \File::delete(public_path($post->thumbnail));
+                }
+                if(\File::exists(public_path("/uploads/contents/".$post->uniqid))){
+                    \File::deleteDirectory(public_path("/uploads/contents/".$post->uniqid));
                 }
             }
+            $result = $post->delete();
         }
         $this->Cacheforget();
         if($result){

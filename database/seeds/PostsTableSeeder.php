@@ -16,8 +16,8 @@ class PostsTableSeeder extends Seeder
         $id_categorys = implode("",$id_categorys);
         $id_users= DB::table('users')->limit(9)->pluck('id')->toArray();
         $id_users = implode("",$id_users);
-        
-        $faker = Faker\Factory::create();
+
+        $faker = \Faker\Factory::create();
         for($i=1;$i<=3;$i++){
             $uniqid = uniqid().uniqid();
             $title = $i==1?'PDO trong PHP - Khái niệm và những thao tác cơ bản':$faker->name." ".$faker->title;
@@ -31,7 +31,7 @@ class PostsTableSeeder extends Seeder
             $row['created_at'] =date('Y-m-d h:s:i');
             $row['updated_at'] =date('Y-m-d h:s:i');
             $row['post_time']=time();
-            \Storage::makeDirectory(("uploads/contents/{$uniqid}"));
+            \File::makeDirectory(public_path("uploads/contents/{$uniqid}"));
             DB::table('posts')->insert($row);
         }
         $uniqid = uniqid().uniqid();
@@ -44,6 +44,6 @@ class PostsTableSeeder extends Seeder
             'created_at'=>date('Y-m-d h:s:i'),
             'updated_at'=>date('Y-m-d h:s:i'),
         ]);
-        \Storage::makeDirectory(("uploads/contents/{$uniqid}"));
+        \File::makeDirectory(public_path("uploads/contents/{$uniqid}"));
     }
 }
