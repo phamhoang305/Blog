@@ -34,13 +34,15 @@ class TagsController extends Controller
             SEOMeta::addMeta('article:section',$tag->tag, 'property');
             OpenGraph::addProperty("site_name",setting()->name);
             OpenGraph::addProperty('locale','vi');
-            $tag->img = "/uploads/defaults/photos-icon.png";
-            OpenGraph::addProperty('image',asset($tag->img));
-            OpenGraph::addProperty('image:secure_url',asset($tag->img));
-            OpenGraph::addProperty("twitter:image",asset($tag->img));
-            $image = getimagesize(public_path($tag->img));
-            OpenGraph::addProperty("image:width",$image[0]);
-            OpenGraph::addProperty("image:height",$image[1]);
+            $path = '/uploads/defaults/tags.png';
+            if(\File::exists(public_path($path))){
+                OpenGraph::addProperty('image',asset($path));
+                OpenGraph::addProperty('image:secure_url',asset($path));
+                OpenGraph::addProperty("twitter:image",asset($path));
+                $image = getimagesize(public_path($path));
+                OpenGraph::addProperty("image:width",$image[0]);
+                OpenGraph::addProperty("image:height",$image[1]);
+            }
             OpenGraph::addProperty('url',url()->current());
             OpenGraph::addProperty('article:published_time', $tag->created_at);
             OpenGraph::addProperty('article:modified_time', $tag->updated_at);

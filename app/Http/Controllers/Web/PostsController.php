@@ -175,12 +175,16 @@ class PostsController extends Controller
         SEOMeta::addMeta('article:section',setting()->name, 'property');
         OpenGraph::addProperty("site_name",setting()->name);
         OpenGraph::addProperty('locale','vi');
-        $post_image = asset('assets/images/defaults/single.png');
-        $image = getimagesize(public_path('assets/images/defaults/photos-icon.png'));
-        $post->img = $post_image;
-        OpenGraph::addProperty('image',asset($post->img));
-        OpenGraph::addProperty('image:secure_url',asset($post->img));
-        OpenGraph::addProperty("twitter:image",asset($post->img));
+        if(\File::exists(public_path(setting()->seoImage))){
+            $img =   asset(setting()->seoImage);
+            $image = getimagesize(public_path(setting()->seoImage));
+        }else{
+            $img = asset('assets/images/defaults/photos-icon.png');
+            $image = getimagesize(public_path('assets/images/defaults/photos-icon.png'));
+        }
+        OpenGraph::addProperty('image',($img));
+        OpenGraph::addProperty('image:secure_url',($img));
+        OpenGraph::addProperty("twitter:image",($img));
         OpenGraph::addProperty("image:width",$image[0]);
         OpenGraph::addProperty("image:height",$image[1]);
         OpenGraph::addProperty('url',url()->current());

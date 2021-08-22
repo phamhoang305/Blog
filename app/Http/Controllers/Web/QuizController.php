@@ -30,7 +30,6 @@ class QuizController extends Controller
             OpenGraph::addProperty("image:width",$image[0]);
             OpenGraph::addProperty("image:height",$image[1]);
         }
-
         OpenGraph::addProperty('url',url()->current());
         $QuizRepository = new QuizRepository();
         $data =  $QuizRepository->getTestCategory($Request);
@@ -47,13 +46,15 @@ class QuizController extends Controller
             SEOTools::setDescription("{$category->des}");
             SEOTools::opengraph()->setUrl(\URL::current());
             OpenGraph::addProperty('locale','vi');
-            $img = "/uploads/defaults/test.png";
-            OpenGraph::addProperty('image',asset($img));
-            OpenGraph::addProperty('image:secure_url',asset($img));
-            OpenGraph::addProperty("twitter:image",asset($img));
-            $image = getimagesize(public_path($img));
-            OpenGraph::addProperty("image:width",$image[0]);
-            OpenGraph::addProperty("image:height",$image[1]);
+            $path = '/uploads/defaults/test.png';
+            if(\File::exists(public_path($path))){
+                OpenGraph::addProperty('image',asset($path));
+                OpenGraph::addProperty('image:secure_url',asset($path));
+                OpenGraph::addProperty("twitter:image",asset($path));
+                $image = getimagesize(public_path($path));
+                OpenGraph::addProperty("image:width",$image[0]);
+                OpenGraph::addProperty("image:height",$image[1]);
+            }
             OpenGraph::addProperty('url',url()->current());
             $data =  $QuizRepository->getTestList($request);
             return view('web.pages.quiz.testlist',['data'=>$data,'category'=>$category]);
@@ -92,13 +93,16 @@ class QuizController extends Controller
             SEOMeta::addMeta('article:section',$info->name, 'property');
             OpenGraph::addProperty("site_name",$info->name);
             OpenGraph::addProperty('locale','vi');
-            $img = "/uploads/defaults/test.png";
-            OpenGraph::addProperty('image',asset($img));
-            OpenGraph::addProperty('image:secure_url',asset($img));
-            OpenGraph::addProperty("twitter:image",asset($img));
-            $image = getimagesize(public_path($img));
-            OpenGraph::addProperty("image:width",$image[0]);
-            OpenGraph::addProperty("image:height",$image[1]);
+            $path = '/uploads/defaults/test.png';
+            if(\File::exists(public_path($path))){
+                OpenGraph::addProperty('image',asset($path));
+                OpenGraph::addProperty('image:secure_url',asset($path));
+                OpenGraph::addProperty("twitter:image",asset($path));
+                $image = getimagesize(public_path($path));
+                OpenGraph::addProperty("image:width",$image[0]);
+                OpenGraph::addProperty("image:height",$image[1]);
+                JsonLd::addImage(asset($path));
+            }
             OpenGraph::addProperty('url',url()->current());
             OpenGraph::addProperty('WebSite:published_time', setting()->created_at);
             OpenGraph::addProperty('WebSite:modified_time', setting()->updated_at);
@@ -107,7 +111,7 @@ class QuizController extends Controller
             JsonLd::setTitle($info->name);
             JsonLd::setDescription($info->des);
             JsonLd::setType('WebSite');
-            JsonLd::addImage(asset($img));
+
             // dd($data[3]);
             $test_result =  $QuizRepository->getTestResultByID_TestList($request);
             return view('web.pages.quiz.testdetail',['data'=>($data),'count'=>$data->count(),'info'=>$info,"test_result"=>$test_result]);
