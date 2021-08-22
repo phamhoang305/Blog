@@ -1,5 +1,6 @@
 /public/hot
 /public/storage
+/public/uploads
 /storage/*.key
 node_modules
 .env
