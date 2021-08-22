@@ -21,13 +21,16 @@ class QuizController extends Controller
         SEOTools::opengraph()->setUrl(\URL::current());
         SEOTools::setDescription("Luyện thi trắc nghiệm trực tuyến, trắc nghiệm online, thi thử trắc nghiệm trực tuyến online các môn");
         OpenGraph::addProperty('locale','vi');
-        $img = "/uploads/defaults/test.png";
-        OpenGraph::addProperty('image',asset($img));
-        OpenGraph::addProperty('image:secure_url',asset($img));
-        OpenGraph::addProperty("twitter:image",asset($img));
-        $image = getimagesize(public_path($img));
-        OpenGraph::addProperty("image:width",$image[0]);
-        OpenGraph::addProperty("image:height",$image[1]);
+        $path = '/uploads/defaults/test.png';
+        if(\File::exists(public_path($path))){
+            OpenGraph::addProperty('image',asset($path));
+            OpenGraph::addProperty('image:secure_url',asset($path));
+            OpenGraph::addProperty("twitter:image",asset($path));
+            $image = getimagesize(public_path($path));
+            OpenGraph::addProperty("image:width",$image[0]);
+            OpenGraph::addProperty("image:height",$image[1]);
+        }
+
         OpenGraph::addProperty('url',url()->current());
         $QuizRepository = new QuizRepository();
         $data =  $QuizRepository->getTestCategory($Request);

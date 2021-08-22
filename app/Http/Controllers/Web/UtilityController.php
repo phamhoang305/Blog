@@ -21,10 +21,12 @@ class UtilityController extends Controller
         SEOMeta::addMeta('article:section',setting()->name, 'property');
         OpenGraph::addProperty("site_name",setting()->name);
         OpenGraph::addProperty('locale','vi');
-        if ( file_exists(public_path(setting()->seoImage))&&setting()->seoImage!=""){
-            $img = setting()->seoImage;
+        if(\File::exists(public_path(setting()->seoImage))){
+            $img =   asset(setting()->seoImage);
+            $image = getimagesize(public_path(setting()->seoImage));
         }else{
-            $img = "/uploads/defaults/photos-icon.png";
+            $img = asset('assets/images/defaults/photos-icon.png');
+            $image = getimagesize(public_path('assets/images/defaults/photos-icon.png'));
         }
         OpenGraph::addProperty('image',asset($img));
         OpenGraph::addProperty('image:secure_url',asset($img));
@@ -50,13 +52,15 @@ class UtilityController extends Controller
         SEOTools::setDescription('As a free css gradient generator tool, this website lets you create a colorful gradient background for your website, blog, or social media profile');
         SEOMeta::addKeyword('Generator, Maker, and Background');
         SEOTools::opengraph()->setUrl(\URL::current());
-        $img = "/uploads/defaults/css_gradient.png";
-        OpenGraph::addProperty('image',asset($img));
-        OpenGraph::addProperty('image:secure_url',asset($img));
-        OpenGraph::addProperty("twitter:image",asset($img));
-        $image = getimagesize(public_path($img));
-        OpenGraph::addProperty("image:width",$image[0]);
-        OpenGraph::addProperty("image:height",$image[1]);
+        $path = "/uploads/defaults/css_gradient.png";
+        if(\File::exists(public_path($path))){
+            OpenGraph::addProperty('image',asset($path));
+            OpenGraph::addProperty('image:secure_url',asset($path));
+            OpenGraph::addProperty("twitter:image",asset($path));
+            $image = getimagesize(public_path($path));
+            OpenGraph::addProperty("image:width",$image[0]);
+            OpenGraph::addProperty("image:height",$image[1]);
+        }
         OpenGraph::addProperty('url',url()->current());
         OpenGraph::addProperty('article:published_time', date('Y-m-d h:s:i'));
         OpenGraph::addProperty('article:modified_time', date('Y-m-d h:s:i'));
