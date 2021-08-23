@@ -1,7 +1,7 @@
 @php
     $image= img_post($post->thumbnail);
     $is_delete=false;
-    if (\File::exists(public_path($post->thumbnail))){
+    if (\File::exists(public_path($post->thumbnail))&&$post->thumbnail!=null){
         $is_delete = true;
     }
 @endphp

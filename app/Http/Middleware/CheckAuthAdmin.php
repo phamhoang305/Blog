@@ -27,7 +27,7 @@ class CheckAuthAdmin
                     return redirect()->route('web.auth.login')->with('status','Tài khoản của bạn đã bị khóa !');
                 }
             }else {
-                return redirect()->route('web.home.index')->with('status','Vui long đăng nhập để tiếp tục !');
+                return redirect()->route('web.home.index')->with('status','Vui lòng đăng nhập để tiếp tục !');
             }
 
     }

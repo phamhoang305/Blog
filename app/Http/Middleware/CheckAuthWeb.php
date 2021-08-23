@@ -24,7 +24,7 @@ class CheckAuthWeb
                 }
             }else {
                 $Request->session()->put('url',url()->current());
-                return redirect()->route('web.auth.login')->with('status','Vui long đăng nhập để tiếp tục !');
+                return redirect()->route('web.auth.login')->with('status','Vui lòng đăng nhập để tiếp tục !');
             }
 
     }

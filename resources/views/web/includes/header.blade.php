@@ -69,8 +69,15 @@
             $avatar = "https://www.gravatar.com/avatar/".md5(user()->email)."jpg?s=64";
         }
         @endphp
+        @if (setting()->user_add_post_status=='on'||Auth::user()->type=='userAdminDefault'||Auth::user()->type=='userAdminCreate')
+            <li class="nav-item" title="Đóng góp bài viết">
+                <a class="nav-link"  href="{{ route('web.publish.add') }}" role="button">
+                    <i class="fas fa-plus-circle"></i> Viết bài</a>
+                </a>
+            </li>
+        @endif
         <li class="nav-item dropdown" id="dropdownSubMenu1">
-            <a class="nav-link" data-toggle="dropdown" href="#">
+            <a class="nav-link" data-toggle="dropdown" href="javascript:void(0)">
                 <i class="fas fa-users"></i> {{ Auth::user()->full_name }}
             </a>
             <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow" style="left: 0px; right: inherit;">
