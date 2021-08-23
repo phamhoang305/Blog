@@ -15,7 +15,7 @@ use App\Repositories\Pages\PagesRepository;
 use App\Repositories\Users\UsersRepository;
 use Config;
 use stdClass;
-
+use Illuminate\Support\Facades\Session;
 class PostsController extends Controller
 {
     public $CategorysRepository;
@@ -90,6 +90,16 @@ class PostsController extends Controller
         SEOTools::opengraph()->setUrl(\URL::current());
         return view("web.pages.posts.nodata",['post'=>$post]);
     }
+    public function postPassword(Request $request)
+    {
+        $post = $this->PostsRepository->getPostByID($request);
+        if($request->password===$post->post_password){
+            Session::put('post_password',$post->post_password);
+            return json_encode(array('status'=>'success'));
+        }else{
+            return json_encode(array('status'=>'error','msg'=>"Mật khẩu không hợp lệ !"));
+        }
+    }
     public function viewSingle($post)
     {
         $user = $this->UsersRepository->getInfoUserByID($post->userID);
@@ -111,7 +121,6 @@ class PostsController extends Controller
             $post_image = asset('assets/images/defaults/photos-icon.png');
             $image = getimagesize(public_path('assets/images/defaults/photos-icon.png'));
         }
-
         $post->img = $post_image;
         OpenGraph::addProperty('image',($post->img));
         OpenGraph::addProperty('image:secure_url',($post->img));
@@ -129,6 +138,13 @@ class PostsController extends Controller
         JsonLd::setDescription($post->post_des);
         JsonLd::setType('WebSite');
         JsonLd::addImage(($post->img));
+        if(!empty($post->post_password)){
+            if(!Session::has('post_password')&&Session::get('post_password')!=$post->post_password){
+                return view('web.pages.posts.password',['post'=>$post]);
+            }
+        }else{
+            Session::forget('post_password');
+        }
         Config::set('comments.guest_commenting',setting()->user_login_register_status=='on'?false:true);
         return view("web.pages.posts.single",['post'=>$post,'user'=>[$user],'singleID'=>$post->uniqid ,'viewBlade'=>'single']);
     }

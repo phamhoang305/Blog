@@ -1114,9 +1114,14 @@ i.icon {
 .layout-navbar-fixed.text-sm .wrapper .content-wrapper {
     margin-top: calc(2.93725rem + 25px);
 }
+label {
+    display: inline-block;
+    margin-bottom: .3rem;
+    font-size: 10pt;
+}
 .header-top-menu{
     height: 30px;
-    margin-left: 15px;
+    margin-left: 9px;
 }
 .header-top-menu ul {
     display: flex;

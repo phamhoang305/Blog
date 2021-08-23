@@ -6,18 +6,8 @@
     }
 @endphp
 <form  value="{{$post->uniqid}}" action="{{$type=='update'?route('web.publish.edit'):route('web.publish.add')}}" id="formAction" name="uniqid">
-    <input type="hidden" id="defaults-image" value="{{asset('assets/images/defaults/photos-icon.png')}}"/>
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">{{$type=='update'?'Cập nhật':'Thêm mới'}}</h3>
-                    <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="card-body " >
+                        <input type="hidden" id="defaults-image" value="{{asset('assets/images/defaults/photos-icon.png')}}"/>
+
                             <div class="row">
                                 <div class="col-md-8 ">
                                     <div class="card card-widget card-dark">
@@ -33,7 +23,7 @@
                                                     <div class="form-group">
                                                         <label>Sơ lượt & Mô tả (Thẻ meta)</label>
                                                         <div class="input-group">
-                                                            <textarea rows="3" type="text" id="post_des"  name="post_des" placeholder="Sơ lượt & Mô tả (Thẻ meta)... " class="form-control">{{$post->post_des}}</textarea>
+                                                            <textarea rows="2" type="text" id="post_des"  name="post_des" placeholder="Sơ lượt & Mô tả (Thẻ meta)... " class="form-control">{{$post->post_des}}</textarea>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -80,7 +70,7 @@
                                                 <div class="col-md-12">
                                                     <label>Nội dung <span class="text-danger">*</span></label>
                                                     <div class="form-group" >
-                                                        <select class="form-control select2" id="editor" name="editor">
+                                                        <select class="form-control form-control-sm select2" id="editor" name="editor">
                                                             <option {{$post->editor=='quill'?'selected':''}} value="quill">--  Editor Quill --</option>
                                                             <option {{$post->editor=='tinymce'?'selected':''}} value="tinymce">-- Editor  Tinymce --</option>
                                                         </select>
@@ -92,7 +82,6 @@
                                                         </div>
                                                     </div>
                                                 </div>
-
                                             </div>
                                         </div>
 
@@ -160,12 +149,18 @@
 
                                                     <div class="form-group">
                                                         <label>Thẻ</label>
-                                                        <div class="input-group mb-3">
-                                                            <input type="text"  value="@isset($tags){{ $tags }}@endisset" id="tags" data-role="tagsinput" placeholder="Thẻ ... " class="form-control">
+                                                        <div class="input-group ">
+                                                            <input type="text"  value="@isset($tags){{ $tags }}@endisset" id="tags" data-role="tagsinput" placeholder="Thẻ ... " class="form-control form-control-sm">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="inputName2" > Gửi Email cho người theo dõi </label>
+                                                        <label>Đặt mật khẩu (Nếu có)</label>
+                                                        <div class="input-group">
+                                                            <input type="text"  value="{{ $post->post_password }}"  name="post_password" id="post_password" placeholder="Mật khẩu ... " class="form-control form-control-sm">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="inputName2"> Gửi Email cho người theo dõi </label>
                                                         <select  name="status_notice_userFollow" class="form-control form-control-sm">
                                                             <option value="off">Không</option>
                                                             <option value="on">Có</option>
@@ -200,9 +195,6 @@
                                     </div>
                                 </div>
                             </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
 </form>
 

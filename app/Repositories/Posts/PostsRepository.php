@@ -422,6 +422,9 @@ class PostsRepository  extends EloquentRepository
         $post->post_des = $request->post_des;
         $post->post_keywords = $request->post_keywords;
         $post->editor = $request->editor;
+        if (!empty($request->post_password)) {
+            $post->post_password = $request->post_password;
+        }
         $post->save();
         if($post){
             $request['user_id']= $post->user_id;
@@ -472,6 +475,9 @@ class PostsRepository  extends EloquentRepository
             $post->post_approve = 'approve';
         }else{
             $post->post_approve = NULL;
+        }
+        if (!empty($request->post_password)) {
+            $post->post_password = $request->post_password;
         }
         $post->save();
         if($post){

@@ -27,7 +27,7 @@ class PublishController extends Controller
         SEOTools::setTitle(Auth::user()->full_name." - Viết bài");
         SEOTools::opengraph()->setUrl(\URL::current());
         $post = new Posts();
-        $post->editor = "quill";
+        $post->editor = "tinymce";
         return view("web.pages.publish.action",['post'=>$post,'showData'=>'myContent','type'=>'insert','typePage'=>true]);
     }
     public function getEdit(Request $request){

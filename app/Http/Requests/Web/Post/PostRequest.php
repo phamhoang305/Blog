@@ -35,6 +35,7 @@ class PostRequest extends FormRequest
             'post_des'=>'max:1000',
             'post_keywords'=>'max:255',
             'post_content'=>'required|min:10',
+            'post_password'=>'max:30',
             'file_post_image'=>'mimes:jpeg,JPEG,png,PNG,jpg,JPG,gif,GIF|max:5120'
         ];
 
@@ -52,6 +53,7 @@ class PostRequest extends FormRequest
             'post_content.min'=>"Nội dung bài phải lớn hơn :min ký tự !",
             'file_post_image.mimes'=>"Định dạng hình ảnh không hợp lệ !",
             'file_post_image.max'=>"Hình anh không được lớn hơn 5 MB !",
+            'post_password.max'=>"Không quá :max ký tự !",
         ];
     }
     protected function failedValidation(Validator $validator): void

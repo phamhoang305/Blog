@@ -77,7 +77,7 @@
             @if (checkRole('post.add'))
             <li class="nav-item  menu-open-new ">
                 <a href="{{ route('admin.post.add') }}" class="nav-link bg-danger">
-                    <i class="nav-icon fas fa-pen-alt"></i>
+                    <i class="nav-icon fas fa-plus-circle"></i>
                     <p>Viết bài mới</p>
                   </a>
             </li>

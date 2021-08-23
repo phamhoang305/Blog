@@ -106,7 +106,7 @@ Route::group(['middleware'=>'HtmlMifier'], function() {
         return globalJS();
     })->name('global.js');
     Route::group(['prefix' => 'thi-trac-nghiem'], function () {
-        Route::get("danh-muc/","QuizController@getTestCategory")->name('web.quiz.category.view');
+        Route::get("chu-de/","QuizController@getTestCategory")->name('web.quiz.category.view');
         Route::get("de-thi/{uniqid?}","QuizController@getTestList")->name('web.quiz.testlist.view');
         Route::post("chi-tiet-de-thi","QuizController@postTestDetail")->name('web.quiz.testdetail.view');
         Route::get("chi-tiet-de-thi/{uniqid?}","QuizController@getTestDetail")->name('web.quiz.testdetail.view');
@@ -116,6 +116,7 @@ Route::group(['middleware'=>'HtmlMifier'], function() {
         });
         Route::get("ket-qua-thi/{uniqid?}","QuizController@getResultDetail")->name('web.quiz.resultdetail');
     });
+    Route::post("post-password","PostsController@postPassword")->name('web.posts.password');
     Route::group(['prefix' => '/'], function () {
         Route::any("{slug1?}/{slug2?}/{slug3?}","PostsController@getPost")->name('web.posts.index');
     });

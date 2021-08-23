@@ -12,7 +12,7 @@
             <li class="nav-item  menu-open-new ">
                 <a href="{{ route('web.publish.add') }}" class="nav-link bg-danger">
 
-                    <i class="nav-icon fas fa-pen-alt"></i>
+                    <i class="nav-icon fas fa-plus-circle"></i>
                     <p>
                         Viết bài mới
 
