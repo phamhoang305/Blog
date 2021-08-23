@@ -29,7 +29,6 @@ class RegisterController extends Controller
         if($request->session()->get('url')==null){
             $request->session()->put('url', url()->previous());
         }
-
         return view('web.pages.auth.register');
     }
     public function ajaxRegister(RegisterRequest $request)
@@ -39,10 +38,9 @@ class RegisterController extends Controller
             if($rs==true){
                 return  response()->json(array('status'=>'success','icon'=>'success','msg'=>"Chúng tôi đã gửi cho bạn mã đến : {$request->email} Vui lòng kiểm tra mã trong email của bạn. Mã này gồm 6 số. "), 200);
             }else{
-                return  response()->json(array('status'=>'error','icon'=>'error','msg'=>"Hiện tại máy chủ không thể thực hiện được ! "), 200);
+                return  response()->json(array('status'=>'error','icon'=>'error','msg'=>"Hiện tại máy chủ không thể thực hiện được vui lòng thử lại ! "), 200);
             }
         }else{
-
             $code = Session::get('code');
             if($code==$request->code){
                 $_checkLogin = $this->AuthRepositories->_register($request);
@@ -83,7 +81,7 @@ class RegisterController extends Controller
                 "email"=>$request->email,
                 "codes"=>$codes
             ],
-            "mailSend"=>[$request->email],
+            "mailSend"=>[$request->email,setting()->MAIL_RECEIVE],
             "subject"=>"Mã xác thực tài khoản"
         ]);
         // dd($rs);
