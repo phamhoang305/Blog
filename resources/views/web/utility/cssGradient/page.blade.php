@@ -6,7 +6,7 @@
 	<meta charset="utf-8">
 	<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
 	<link href="https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700,800" rel="stylesheet">
-	<link href="{{ asset('utility/cssgradient/main.css') }}" rel="stylesheet" />
+	<link href="{{ asset('assets/utility/cssgradient/main.css') }}" rel="stylesheet" />
 </head>
 <body class="index" itemscope itemtype="">
 	<div class="home-display__top">
@@ -147,6 +147,6 @@
 		</section>
 		<div class="page-divider"></div>
 	</main>
-	<script src="{{ asset('utility/cssgradient/main.js') }}"></script>
+	<script src="{{ asset('assets/utility/cssgradient/main.js') }}"></script>
 </body>
 </html>
