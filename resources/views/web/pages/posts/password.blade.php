@@ -37,7 +37,13 @@
          </div>
         </div>
 @endsection
+@section('runCSS')
+<link rel="stylesheet" href="{{ asset('assets/themes/plugins/codesample/prism.min.css')}}">
+<link rel="stylesheet" href="{{ asset('assets/themes/plugins/highlight/styles/monokai-sublime.min.css')}}">
+@endsection
 @section('runJS')
+<script src="{{asset('assets/themes/plugins/codesample/prism.min.js')}}"></script>
+<script src="{{asset('assets/themes/plugins/highlight/highlight.min.js')}}"></script>
 <script src="{{asset('assets/web/single/single.js')}}?v={{ time() }}"></script>
 <script>var single = new single();single.init();</script>
 @endsection
