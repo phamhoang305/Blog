@@ -38,7 +38,12 @@ class RegisterController extends Controller
             if($rs==true){
                 return  response()->json(array('status'=>'success','icon'=>'success','msg'=>"Chúng tôi đã gửi cho bạn mã đến : {$request->email} Vui lòng kiểm tra mã trong email của bạn. Mã này gồm 6 số. "), 200);
             }else{
-                return  response()->json(array('status'=>'error','icon'=>'error','msg'=>"Hiện tại máy chủ không thể thực hiện được vui lòng thử lại ! "), 200);
+                return  response()->json(array(
+                    'status'=>'error',
+                    'icon'=>'error',
+                    'msg'=>"Hiện tại máy chủ không thể thực hiện được vui lòng thử lại ! ",
+                    "error"=>$rs,
+                ), 200);
             }
         }else{
             $code = Session::get('code');
