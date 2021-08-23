@@ -16,7 +16,7 @@
     @include('web.includes.css')
     @yield('runCSS')
 </head>
-<body class="layout-top-nav control-sidebar-slide-open layout-navbar-fixed layout-footer-fixed text-sm">
+<body class="{{ setting()->darkMode=='on'?'dark-mode':'' }} layout-top-nav control-sidebar-slide-open layout-navbar-fixed layout-footer-fixed text-sm">
     <div class="wrapper ">
         @include('web.includes.header')
         <div class="content-wrapper">

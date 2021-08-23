@@ -1103,7 +1103,7 @@ i.icon {
     height: 150px;
     padding: 1rem;
     text-align: center;
-    background-image: url('./../images/defaults/banner_user.jpg');
+    background-image:  url(../../images/defaults/banner_user.jpg);
     background-size: 100%;
 }
 
