@@ -6,16 +6,17 @@
                     <div class="col-md-8">
                         <div class="card ">
                             <div class="card-body">
-                                <div class="">
+                                <div class="skeleton skeleton-line" style="--lines: 25;--c-w: 100%;"></div>
+                                <div class="load-content-quiz" style="display: none">
                                     @php $i=0; @endphp
                                         <table class="table table-bordered table-sm">
-                                            <tr class="dark"><th colspan="4">{{$data->category_name}} </th></tr>
+                                            <tr class="dark"><th colspan="4">{{$data->category_name}} - {{ $data->testlist_name }}</th></tr>
 
                                             <tr class="dark">
                                                 <th colspan="2"><a href="{{route('web.quiz.history')}}" class="btn btn-sm btn-block btn-outline-danger "><i class="fas fa-long-arrow-alt-left"></i> Quay lại</a></th>
                                                 <th colspan="2"><a href="{{route('web.quiz.testdetail.view')}}/{{$data->testlist_uniqid}}" class="btn btn-sm btn-block btn-outline-info "><i class="fas fa-check"></i> Làm lại</a></th>
                                             </tr>
-                                            <tr class="dark"><th colspan="4">{!! $data->testlist_des !!}</th></tr>
+                                            <tr class="dark"><th colspan="4" class="item-note">{!! $data->testlist_des !!}</th></tr>
                                         </table>
                                         <table class="table table-bordered table-sm">
                                         <tr >
@@ -41,7 +42,7 @@
                                                     <div class="table-responsive">
                                                         <table class="table table-bordered table-sm">
                                                             @if ($value->note!="<p><br></p>")
-                                                            <tr><th colspan="4">{!!$value->note!!}</th></tr>
+                                                            <tr><th colspan="4" class="item-note">{!!$value->note!!}</th></tr>
                                                             @endif
                                                         </table>
                                                     </div>
@@ -105,6 +106,11 @@
 @section('runJS')
 <script src="{{asset('assets/themes/plugins/codesample/prism.min.js')}}"></script>
 <script src="{{asset('assets/themes/plugins/highlight/highlight.min.js')}}"></script>
+<script src="{{asset('assets/web/quiz/testlist.js')}}?v={{uniqid()}}"></script>
+<script>
+    var testlist = new testlist();
+    testlist.init();
+ </script>
 @endsection
 
 

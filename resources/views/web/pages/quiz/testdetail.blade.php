@@ -6,7 +6,8 @@
                     <div class="col-md-8">
                         <div class="card ">
                             <div class="card-body">
-                                <div class="">
+                                <div class="skeleton skeleton-line" style="--lines: 25;--c-w: 100%;"></div>
+                                <div class="load-content-quiz" style="display: none">
                                     @php $i=0; @endphp
                                         <table class="table table-bordered table-sm">
                                             <tr class="dark"><th colspan="2">{{$info->name}} ({{$count}}) câu </th></tr>
@@ -86,7 +87,7 @@
                                                         <div class="table-responsive">
                                                             <table class="table table-bordered table-sm">
                                                                 @if ($value->note!="<p><br></p>")
-                                                                    <tr><th colspan="2">{!!$value->note!!}</th></tr>
+                                                                    <tr><th colspan="2" class="item-note">{!!$value->note!!}</th></tr>
                                                                 @endif
                                                             </table>
                                                         </div>
@@ -115,7 +116,6 @@
                                         </table>
                                         @endif
                                 </div>
-
                             </div>
                             <div class="card-body">
 
@@ -143,7 +143,7 @@
 @section('runJS')
 <script src="{{asset('assets/themes/plugins/codesample/prism.min.js')}}"></script>
 <script src="{{asset('assets/themes/plugins/highlight/highlight.min.js')}}"></script>
-<script src="{{asset('assets/web/quiz/testlist.js')}}?v={{time()}}"></script>
+<script src="{{asset('assets/web/quiz/testlist.js')}}?v={{uniqid()}}"></script>
 <script>
    var testlist = new testlist();
    testlist.datas={

@@ -17,7 +17,7 @@ class QuizController extends Controller
     public function getTestCategory(Request $Request)
     {
         $Request['status']=0;
-        SEOTools::setTitle("Học thi trắc nghiệm online - danh mục ");
+        SEOTools::setTitle("Học thi trắc nghiệm online - Chủ đề ");
         SEOTools::opengraph()->setUrl(\URL::current());
         SEOTools::setDescription("Luyện thi trắc nghiệm trực tuyến, trắc nghiệm online, thi thử trắc nghiệm trực tuyến online các môn");
         OpenGraph::addProperty('locale','vi');
