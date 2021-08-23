@@ -10,19 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/update-path', function () {
-        $posts = \DB::table('posts')->get();
-            foreach($posts as $item){
-                \DB::table('posts')->where('id','=',$item->id)->update([
-                    'thumbnail'=>str_replace('/uploads/thumbnails/max/','/uploads/thumbnails/',$item->thumbnail),
-                ]);
-            echo img_post($item->thumbnail)."<br>";
-        }
-});
-// Route::get('storage-link', function () {
-//     $exitCode = Artisan::call('storage:link', [] );
-//     echo $exitCode; // 0 exit code for no errors.
-// });
+\
 Route::post("change-dark-mode","LoginController@changeDarkMode")->name('web.dark.mode');
 Route::get("forgot","LoginController@forgot")->name('web.forgot.index');
 Route::post("forgot","LoginController@postForgot")->name('web.forgot.index');

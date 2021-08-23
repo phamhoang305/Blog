@@ -245,6 +245,7 @@ class QuizRepository extends EloquentRepository
         $error_number = 0;
         $true_number = 0;
         $nocheck_number = 0;
+        // dd($result_test);
         foreach($result_test as $item){
             $Testdetail =  Testdetail::where('uniqid','=',$item->parentID)->first();
             if($item->childID==""){

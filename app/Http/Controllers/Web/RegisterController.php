@@ -36,7 +36,6 @@ class RegisterController extends Controller
     {
         if($request->type=='confirm'){
             $rs =  $this->email_authentication($request);
-
             if($rs==true){
                 return  response()->json(array('status'=>'success','icon'=>'success','msg'=>"Chúng tôi đã gửi cho bạn mã đến : {$request->email} Vui lòng kiểm tra mã trong email của bạn. Mã này gồm 6 số. "), 200);
             }else{
@@ -57,7 +56,7 @@ class RegisterController extends Controller
                             "email"=>$request->email
                         ],
                         "mailSend"=>[setting()->MAIL_RECEIVE],
-                        "subject"=>"ĐĂNG KÝ THÀNH VIÊN"
+                        "subject"=>"Đăng ký thành viên mới"
                     ]);
                     Session::put('code',"");
                     \Auth::attempt(['email'=>$request->email,'password'=>$request->password]);
@@ -84,10 +83,10 @@ class RegisterController extends Controller
                 "email"=>$request->email,
                 "codes"=>$codes
             ],
-            "mailSend"=>[setting()->MAIL_RECEIVE,$request->email],
-            "subject"=>"ĐĂNG KÝ THÀNH VIÊN"
+            "mailSend"=>[$request->email],
+            "subject"=>"Mã xác thực tài khoản"
         ]);
-
+        // dd($rs);
         if($rs===true){
             return true;
         }else{

@@ -797,7 +797,13 @@ i.icon {
 	}
 }
 .text-sm .card-title {
-    font-size: 0.8rem;
+    font-size: 12pt;
+}
+.dark-mode .table-warning, .dark-mode .table-warning>td, .dark-mode  .table-warning>th {
+    background-color: #fd7e14;
+}
+.dark-mode .table-success, .dark-mode .table-success>td, .dark-mode  .table-success>th {
+    background-color: #00bc8c;
 }
 .animated-background {
 	animation-duration: 1s;

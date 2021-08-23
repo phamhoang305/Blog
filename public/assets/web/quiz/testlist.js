@@ -111,11 +111,11 @@ function testlist(){
             data = shuffle(data);
             $.each(data,function(index,value){
                 html+='<div class="card"><div class="card-body"  style="border: solid 2px #108467;">';
-                html+='<table class="table table-bordered table-sm item-parent-data" data-parent="'+value.uniqid+'" >';
+                html+='<table class="table table-bordered table-sm " data-parent="'+value.uniqid+'" >';
                 html += '<tr class="dark"><th colspan="3">Câu '+(index+1)+' : '+value.title+'</th></tr>';
                 html+='</table>';
                 html+='<div class="table-responsive">';
-                    html+='<table class="table table-bordered table-sm item-parent-data" data-parent="'+value.uniqid+'" >';
+                    html+='<table class="table table-bordered table-sm" data-parent="'+value.uniqid+'" >';
                     if(value.note!="<p><br></p>"){
                         if(value.note!=null){
                             html += '<tr><th colspan="3">'+value.note+'</th></tr>';

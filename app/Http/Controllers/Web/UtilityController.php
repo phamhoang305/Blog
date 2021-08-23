@@ -31,7 +31,6 @@ class UtilityController extends Controller
         OpenGraph::addProperty('image',asset($img));
         OpenGraph::addProperty('image:secure_url',asset($img));
         OpenGraph::addProperty("twitter:image",asset($img));
-        $image = getimagesize(public_path($img));
         OpenGraph::addProperty("image:width",$image[0]);
         OpenGraph::addProperty("image:height",$image[1]);
         OpenGraph::addProperty('url',url()->current());

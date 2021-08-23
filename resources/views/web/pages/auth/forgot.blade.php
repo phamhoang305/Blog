@@ -14,9 +14,7 @@
 <div class="login-box">
     <!-- /.login-logo -->
     <div class="card card-outline card-dark">
-      <div class="card-header text-center">
-        <img width="100%" src="{{getLogo()}}" alt="{{setting()->name}}"/>
-      </div>
+
       <div class="card-body login-card-body">
         <div class="callout callout-warning">
             <p>Nhập email của bạn để lấy lại mật khẩu !</p>
@@ -42,9 +40,7 @@
             </div>
         </form>
     </div>
-    <div class="card-footer text-center">
-        <strong>Copyright &copy; 2020-{{ date('Y') }} <a href="{{ route('web.home.index') }}">{{ setting()->name }}</a>.</strong> All rights reserved.
-    </div>
+
     </div>
     <!-- /.card -->
   </div>

@@ -138,6 +138,7 @@
 @section('runCSS')
 <link rel="stylesheet" href="{{ asset('assets/themes/plugins/codesample/prism.min.css')}}">
 <link rel="stylesheet" href="{{ asset('assets/themes/plugins/highlight/styles/monokai-sublime.min.css')}}">
+<link rel="stylesheet" href="{{ asset('assets/themes/plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
 @endsection
 @section('runJS')
 <script src="{{asset('assets/themes/plugins/codesample/prism.min.js')}}"></script>

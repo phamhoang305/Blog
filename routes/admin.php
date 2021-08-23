@@ -10,20 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-// Route::group(['prefix' => '/db'], function () {
-//     Route::get('/new', function () {
-//         \Artisan::call('migrate:fresh --seed');
-//         return redirect()->route('web.home.index');
-//     });
-//     Route::get('/install', function () {
-//         \Artisan::call('migrate');
-//         \Artisan::call('migrate:fresh --seed');
-//         return redirect()->route('web.home.index');
-//     });
-// });
 Route::get(setting()->route_login,"LoginController@getLogin")->name('admin.auth.login');
 Route::post(setting()->route_login,"LoginController@ajaxLogin")->name('admin.auth.ajaxLogin');
-
 Route::group(['prefix' => setting()->route_admin,'middleware'=>['CheckAuthAdmin']], function () {
     Route::group(['prefix' => '/'], function () {
         Route::get("/","DashboardController@index")->name('admin.dashboard.view');
@@ -156,8 +144,6 @@ Route::group(['prefix' => setting()->route_admin,'middleware'=>['CheckAuthAdmin'
         });
     });
 });
-
-
 Route::group(['prefix' => 'sitemap'], function () {
     Route::get("show","SitemapController@showSitemap")->name('admin.sitemap.show');
     Route::get("cron-job","SitemapController@cronjobUpdate")->name('admin.sitemap.cronjobUpdate');

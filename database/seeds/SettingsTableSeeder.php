@@ -26,7 +26,7 @@ class SettingsTableSeeder extends Seeder
                 "MAIL_FROM_NAME"=>"ĐINH VĂN LÀNH",
                 "MAIL_ENCRYPTION"=>'tls',
                 "MAIL_USERNAME"=>"freelancertestcode@gmail.com",
-                "MAIL_PASSWORD"=>"freelancertestcodemail",
+                "MAIL_PASSWORD"=>"dinhvanlanh12021996",
                 "MAIL_RECEIVE"=>"dinhvanlanh.it@gmail.com",
                 "contact_mail"=>'dinhvanlanh.it@gmail.com',
                 "contact_phone"=>"0966334404",

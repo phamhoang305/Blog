@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
                 PostsTableSeeder::class,
                 // TagsTableSeeder::class,
                 // FollowsTableSeeder::class,
-                // TestCategoryTableSeeder::class
+                TestCategoryTableSeeder::class
             ]
 
         );

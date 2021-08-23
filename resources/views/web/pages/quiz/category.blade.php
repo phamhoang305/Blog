@@ -6,7 +6,7 @@
                     <div class="col-md-12">
                         <div class="card ">
                             <div class="card-header p-2 ">
-                                <h3 class="card-title text-center">Danh mục </h3>
+                                <h3 class="card-title text-center" >Chủ đề </h3>
                             </div>
                             <div class="card-body">
                                 <form action="">
@@ -40,7 +40,7 @@
                                                     $i=0;
                                                 }
                                             @endphp
-                                            <div class="col-lg-3 col-6">
+                                            <div class="col-sm-12 col-lg-3 col-md-3">
                                                 <div class="small-box bg-{{$array[$i]}}">
                                                     <div class="inner">
                                                     <h3 >{{$item->name}}</h3>
