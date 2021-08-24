@@ -824,23 +824,23 @@ function uuid(){
 function contentDarkMode() {
     if($('body').hasClass('dark-mode')){
         $('.post-content').find('a').css('color','rgb(96 224 218)');
-        $('.post-content').find('p').css('color','whitesmoke');
-        $('.post-content').find('p,h1,h2,h3,h4,h5,h6,ul,li').css('color','whitesmoke');
-        $('.post-content').find('p span').css('color','whitesmoke');
-        $('.post-content').find('p font').css('color','whitesmoke');
-        $('.post-content').find('p,h1 span,h2 span,h3 span,h4 span,h5 span,h6 span,ul,li').css('color','whitesmoke');
+        $('.post-content').find('p').css('color','#dbe4ec');
+        $('.post-content').find('p,h1,h2,h3,h4,h5,h6,ul,li,strong,span,i,b').css('color','#dbe4ec');
+        $('.post-content').find('p span').css('color','#dbe4ec');
+        $('.post-content').find('p font').css('color','#dbe4ec');
+        $('.post-content').find('p,h1 span,h2 span,h3 span,h4 span,h5 span,h6 span,ul,li').css('color','#dbe4ec');
         $('.post-content').find('table').removeAttr('style');
         $('.post-content').find('table').addClass('table hover table-bordered table-hover table-sm table-striped w-100');
         $('.post-content').find('table tr').removeAttr('style');
         $('.post-content').find('table tr th').removeAttr('style');
         $('.post-content').find('table tr td').removeAttr('style');
-        $('.post-content').find('table tr').css('color','whitesmoke');
-        $('.post-content').find('table tr th').css('color','whitesmoke');
-        $('.post-content').find('table tr td').css('color','whitesmoke');
-        $('.post-content').find('table th span').css('color','whitesmoke');
-        $('.post-content').find('table td span').css('color','whitesmoke');
-        $('.post-content').find('table td p').css('color','whitesmoke');
-        $('.post-content').find('table td p font').css('color','whitesmoke');
+        $('.post-content').find('table tr').css('color','#dbe4ec');
+        $('.post-content').find('table tr th').css('color','#dbe4ec');
+        $('.post-content').find('table tr td').css('color','#dbe4ec');
+        $('.post-content').find('table th span').css('color','#dbe4ec');
+        $('.post-content').find('table td span').css('color','#dbe4ec');
+        $('.post-content').find('table td p').css('color','#dbe4ec');
+        $('.post-content').find('table td p font').css('color','#dbe4ec');
         $('.post-content').find('pre').css('background-color','#121416;');
     }
 }
