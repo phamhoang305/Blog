@@ -13,6 +13,7 @@ use Analytics;
 use Spatie\Analytics\Period;
 use App\Repositories\Users\UsersRepository;
 use App\Repositories\Contact\ContactRepository;
+use DB;
 class DashboardController extends Controller
 {
 
@@ -26,6 +27,7 @@ class DashboardController extends Controller
         $contacts = $rpcontact->getListContractDasboard(6);
         // dd(config('analytics'));
         // $pages = Analytics::fetchMostVisitedPages(Period::days(1));
-        return view("admin.pages.dashboard.index",['users'=>$users,'contacts'=>$contacts]);
+        $sessions = DB::table('sessions')->limit(10)->get();
+        return view("admin.pages.dashboard.index",['users'=>$users,'contacts'=>$contacts,'sessions'=>$sessions]);
     }
 }

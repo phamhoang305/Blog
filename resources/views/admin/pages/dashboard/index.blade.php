@@ -211,6 +211,46 @@
               </div>
               <!-- /.card-footer -->
             </div>
+            <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">Truy cập gần đây</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body p-0">
+                  <table class="table table-bordered table-sm">
+                      <thead>
+                          <tr>
+                              <th style="width:10%" class="text-center">STT</th>
+                              <th class="text-center">IP</th>
+                              <th class="text-center">Thông tin</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          @if ($sessions)
+                          @php $i=0;@endphp
+                          @foreach ($sessions as $item)
+                              @php $i++;@endphp
+                            <tr>
+                                <td class="text-center">{{$i}}</td>
+                                <td class="text-center">{{$item->ip_address}}</td>
+                                <td class="text-center">{{$item->user_agent}}</td>
+                            </tr>
+                          @endforeach
+                          @else
+                          <tr>
+                              <td colspan="3" class="text-center">Chưa có dữ liệu nào !</td>
+                          </tr>
+                          @endif
+                      </tbody>
+                  </table>
+                  <!-- /.users-list -->
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer text-center">
+                  {{-- <a href="{{ route('admin.contact.view') }}">Xem tất cả liên hệ</a> --}}
+                </div>
+                <!-- /.card-footer -->
+              </div>
             <!--/.card -->
         </div>
         <!-- /.col -->

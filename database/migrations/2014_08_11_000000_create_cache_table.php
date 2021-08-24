@@ -17,6 +17,7 @@ class CreateCacheTable extends Migration
             $table->string('key')->unique();
             $table->mediumText('value')->nullable();
             $table->integer('expiration')->nullable();
+            $table->timestamps();
         });
     }
 
