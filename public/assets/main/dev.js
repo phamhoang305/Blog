@@ -823,24 +823,28 @@ function uuid(){
 }
 function contentDarkMode() {
     if($('body').hasClass('dark-mode')){
+        var color = '#dbe4ec';
         $('.post-content').find('a').css('color','rgb(96 224 218)');
-        $('.post-content').find('p').css('color','#dbe4ec');
-        $('.post-content').find('p,h1,h2,h3,h4,h5,h6,ul,li,strong,span,i,b').css('color','#dbe4ec');
-        $('.post-content').find('p span').css('color','#dbe4ec');
-        $('.post-content').find('p font').css('color','#dbe4ec');
-        $('.post-content').find('p,h1 span,h2 span,h3 span,h4 span,h5 span,h6 span,ul,li').css('color','#dbe4ec');
+        $('.post-content').find('p,h1,h2,h3,h4,h5,h6,ul,li').css('color',color);
+        $('.post-content').find('p span').css('color',color);
+        $('.post-content').find('p font').css('color',color);
+        $('.post-content').find('h1 span,h2 span,h3 span,h4 span,h5 span,h6 span,li span').css('color',color);
+        $('.post-content').find('h1 strong,h2 strong,h3 strong,h4 strong,h5 strong,h6 strong,li strong').css('color',color);
+        $('.post-content').find('h1 b,h2 b,h3 b,h4 b,h5 b,h6 b,li b').css('color',color);
+        $('.post-content').find('h1 font,h2 font,h3 font,h4 font,h5 font,h6 font,li font').css('color',color);
+        $('.post-content').find('h1 i,h2 i,h3 i,h4 i,h5 i,h6 i,li i').css('color',color);
         $('.post-content').find('table').removeAttr('style');
         $('.post-content').find('table').addClass('table hover table-bordered table-hover table-sm table-striped w-100');
         $('.post-content').find('table tr').removeAttr('style');
         $('.post-content').find('table tr th').removeAttr('style');
         $('.post-content').find('table tr td').removeAttr('style');
-        $('.post-content').find('table tr').css('color','#dbe4ec');
-        $('.post-content').find('table tr th').css('color','#dbe4ec');
-        $('.post-content').find('table tr td').css('color','#dbe4ec');
-        $('.post-content').find('table th span').css('color','#dbe4ec');
-        $('.post-content').find('table td span').css('color','#dbe4ec');
-        $('.post-content').find('table td p').css('color','#dbe4ec');
-        $('.post-content').find('table td p font').css('color','#dbe4ec');
+        $('.post-content').find('table tr').css('color',color);
+        $('.post-content').find('table tr th').css('color',color);
+        $('.post-content').find('table tr td').css('color',color);
+        $('.post-content').find('table th span').css('color',color);
+        $('.post-content').find('table td span').css('color',color);
+        $('.post-content').find('table td p').css('color',color);
+        $('.post-content').find('table td p font').css('color',color);
         $('.post-content').find('pre').css('background-color','#121416;');
     }
 }
