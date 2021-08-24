@@ -14,6 +14,7 @@ class CreateSessionsTable extends Migration
     public function up()
     {
         Schema::create('sessions', function (Blueprint $table) {
+            $table->integer('idnum')->autoIncrement();
             $table->string('id')->unique();
             $table->foreignId('user_id')->nullable();
             $table->string('ip_address', 45)->nullable();
