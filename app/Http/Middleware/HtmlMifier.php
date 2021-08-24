@@ -4,14 +4,16 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Response;
-
+use Route;
 class HtmlMifier
 {
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        $name = Route::currentRouteName();
+        if($name=='web.posts.index'||$name=='web.quiz.testdetail.view'||$name=='web.quiz.resultdetail'){
+            return $next($request);
+        }
         $response = $next($request);
-
         if ($this->isResponseObject($response) && $this->isHtmlResponse($response)) {
             $replace = [
               '/\>[^\S ]+/s'                                                      => '> ',
@@ -29,13 +31,10 @@ class HtmlMifier
               '/\),[\r\n\t ]+/s'                                                  => '),',
               '~([\r\n\t ])?([a-zA-Z0-9]+)=\"([a-zA-Z0-9_\\-]+)\"([\r\n\t ])?~s'  => '$1$2=$3$4',
             ];
-
             $response->setContent(preg_replace(array_keys($replace), array_values($replace), $response->getContent()));
         }
-
         return $response;
     }
-
     protected function isResponseObject($response)
     {
         return is_object($response) && $response instanceof Response;

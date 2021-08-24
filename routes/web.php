@@ -28,7 +28,7 @@ Route::group(['prefix' => 'tools'], function () {
         Route::post("page","UtilityController@gethtmltojsxpage")->name('web.htmltojsx.page');
     });
 });
-Route::group(['middleware'=>'HtmlMifier'], function() {
+
     Route::group(['prefix' => '/widget'], function () {
         Route::get("/","WidgetController@getWidget")->name('web.widget.index');
     });
@@ -120,5 +120,4 @@ Route::group(['middleware'=>'HtmlMifier'], function() {
     Route::group(['prefix' => '/'], function () {
         Route::any("{slug1?}/{slug2?}/{slug3?}","PostsController@getPost")->name('web.posts.index');
     });
-});
 

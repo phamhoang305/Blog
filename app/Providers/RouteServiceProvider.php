@@ -69,6 +69,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::middleware('web')
              ->namespace($this->namespaceWeb)
+             ->middleware('HtmlMifier')
              ->group(base_path('routes/web.php'));
     }
 
