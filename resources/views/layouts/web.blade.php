@@ -10,7 +10,7 @@
     <meta name="google-site-verification" content="vEPcZnk3Nv2QC9JjuZkJ4EiuqsTmn0oYj7eFvQHLPsw" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="sitemap" type="application/xml" href="{{asset('sitemap.xml')}}"/>
-    {!! SEO::generate() !!}
+    {!! SEO::generate(true) !!}
     @include('includes.icon')
     <link rel="stylesheet" href="{{asset('assets/themes/plugins/fontawesome-free/css/all.min.css')}}?v={{ uniqid() }}">
     @include('web.includes.css')
