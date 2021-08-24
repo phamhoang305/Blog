@@ -25,7 +25,12 @@ class DashboardController extends Controller
         $users = $rpuser->getListUserDasboard(8);
         $rpcontact = new ContactRepository();
         $contacts = $rpcontact->getListContractDasboard(6);
-        $sessions = DB::table('sessions')->orderBy('idnum','desc')->groupBy('ip_address')->limit(10)->get();
+        $sessions = DB::table('sessions')
+        ->orderBy('idnum','desc')
+        ->groupBy('ip_address')
+        ->limit(10)
+        ->select('ip_address','idnum','user_agent','last_activity')
+        ->get();
         return view("admin.pages.dashboard.index",['users'=>$users,'contacts'=>$contacts,'sessions'=>$sessions]);
     }
 }
