@@ -21,7 +21,7 @@ class HomeController extends Controller
     }
     public function index(Request $request)
     {
-        // dd(getMenu());
+        // dd(config('database'));
         SEOMeta::setCanonical(\URL::current());
         SEOTools::setTitle(setting()->title);
         SEOTools::setDescription(setting()->des);

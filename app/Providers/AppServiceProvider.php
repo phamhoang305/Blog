@@ -15,14 +15,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        // View::composer('admin.includes.sidebar', function($view) {
-        //     $countData = CountAdmin::all();
-        //     $data = new \stdClass;
-        //     foreach ($countData as $item) {
-        //             $data->{$item->KEY} = $item->VALUE;
-        //     }
-        //     $view->with('shareAdmin', $data);
-        // });
+
     }
 
     /**

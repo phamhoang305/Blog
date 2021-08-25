@@ -55,22 +55,19 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapAdminRoutes()
     {
-        Route::middleware('admin')
+        Route::middleware('CheckAuthAdmin')
              ->namespace($this->namespaceAdmin)
              ->group(base_path('routes/admin.php'));
     }
     protected function mapStorageRoutes()
     {
-        Route::middleware('storage')
-             ->namespace($this->namespace)
-             ->group(base_path('routes/storage.php'));
+        Route::namespace($this->namespace)->group(base_path('routes/storage.php'));
     }
     protected function mapWebRoutes()
     {
-        Route::middleware('web')
-             ->namespace($this->namespaceWeb)
-             ->middleware('HtmlMifier')
-             ->group(base_path('routes/web.php'));
+        Route::middleware('WebMiddleware')
+        ->namespace($this->namespaceWeb)
+        ->group(base_path('routes/web.php'));
     }
 
     /**

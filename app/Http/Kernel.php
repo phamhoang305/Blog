@@ -83,7 +83,7 @@ class Kernel extends HttpKernel
         'CheckStatusAddPost'=>\App\Http\Middleware\CheckStatusAddPost::class,
         'CheckStatusLoginRegister'=>\App\Http\Middleware\CheckStatusLoginRegister::class,
         'CheckPermission'=>\App\Http\Middleware\CheckPermission::class,
-        'HtmlMifier' => \App\Http\Middleware\HtmlMifier::class,
+        'WebMiddleware' => \App\Http\Middleware\WebMiddleware::class,
     ];
     /**
      * The priority-sorted list of middleware.

@@ -490,6 +490,7 @@ function getRedirectPublish($request)
 function checkDrive()
 {
     $agent = new Agent();
+    // dd($agent);
     $thiet_bi = "Desktop";
     if($agent->isDesktop()){
         $thiet_bi="Desktop";
