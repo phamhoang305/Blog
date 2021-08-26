@@ -1232,3 +1232,6 @@ label {
     background-color: #636e6f;
     border-radius: 3%;
 }
+.dark-mode .table-danger, .dark-mode .table-danger>td, .dark-mode .table-danger>th {
+    background-color: #e74c3c;
+}
