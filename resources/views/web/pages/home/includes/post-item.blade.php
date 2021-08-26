@@ -2,7 +2,7 @@
 
 <li class="item">
     <div class="product-img">
-        <img src="{{img_post($item->thumbnail)}}" alt="{{$item->full_name}}" class="img-size-50 img-thumbnail">
+        <img src="{{img_post($item->thumbnail)}}" alt="{{$item->full_name}}" class="img-size-50 profile-user-img">
     </div>
     <div class="product-info">
         <a href="{{ route('web.posts.index',$item->post_slug) }}" class="product-title">{{$item->post_title}}
