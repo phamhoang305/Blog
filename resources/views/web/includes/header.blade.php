@@ -1,6 +1,6 @@
 
 <div class="header-top bg-danger">
-    <nav class="main-header navbar navbar-expand-md  navbar-dark navbar-danger">
+    <nav class="main-header navbar navbar-expand-md top-bg navbar-dark navbar-danger">
         <div class="container">
                 <div class="header-top-menu">
                     <ul>

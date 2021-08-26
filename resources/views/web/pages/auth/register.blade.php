@@ -9,7 +9,7 @@
         </div>
         <div class="col-md-4  ">
         <div class="card  card-dark">
-          <div class="card-header text-center">
+          <div class="card-header text-center bg-white">
             <a href="" class="h3"><b>ĐĂNG KÝ</b></a>
           </div>
             <!-- /.card-header -->

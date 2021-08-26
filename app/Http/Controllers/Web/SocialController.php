@@ -21,6 +21,9 @@ class SocialController extends Controller
         Config::set("services.github.client_id",setting()->github_client_id);
         Config::set("services.github.client_secret",setting()->github_client_secret);
         Config::set("services.github.redirect",route('web.social.callback','github'));
+
+
+
     }
 
     protected $providers = [
@@ -32,6 +35,7 @@ class SocialController extends Controller
             return $this->sendFailedResponse("{$driver} is not currently supported");
         }
         try {
+            // dd(config('services.google'));
             return Socialite::driver($driver)->redirect();
         } catch (\Exception $e) {
             return $this->sendFailedResponse($e->getMessage());

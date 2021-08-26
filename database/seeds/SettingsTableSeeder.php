@@ -46,9 +46,9 @@ class SettingsTableSeeder extends Seeder
                 'facebook_client_secret'=>'',
                 'facebook_redirect'=>'',
 
-                'google_client_id'=>'728903266054-q8q2ssb6pdjb8tm9516drmndu8n4v5jb.apps.googleusercontent.com',
-                'google_client_secret'=>'awSBXk3Eq4zrGooD1Ybqo8pp',
-                'google_redirect'=>'',
+                'google_client_id'=>'831855867209-2n99fj01vnc7oho2g278el22oul61q36.apps.googleusercontent.com',
+                'google_client_secret'=>'4Cg-K7h7sw8RCRIAR3CjR-MF',
+                'google_redirect'=>'https://dinhvanlanh.com/social/oauth/google/callback',
 
                 'github_client_id'=>'a2bbb531145dad7d710e',
                 'github_client_secret'=>'157c76e47b0a30dea6bc3958543d4dc57e1cf1f0',
