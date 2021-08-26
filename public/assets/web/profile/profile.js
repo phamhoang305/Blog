@@ -13,10 +13,9 @@ function profile(){
             [{'align': [] }],
           ];
          var quill  = new Quill('#about', {
-            table: true,
             modules: {
                 toolbar: toolbarOptions,
-                syntax: true,
+                syntax: false,
               },
             theme: 'snow'
         });
