@@ -61,7 +61,7 @@
         }
         @endphp
         @if (setting()->user_add_post_status=='on'||Auth::user()->type=='userAdminDefault'||Auth::user()->type=='userAdminCreate')
-            <li class="nav-item" title="Đóng góp bài viết">
+            <li class="nav-item mytooltip" title="Đóng góp bài viết">
                 <a class="nav-link"  href="{{ route('web.publish.add') }}" role="button">
                     <i class="fas fa-plus-circle"></i> Viết bài</a>
                 </a>

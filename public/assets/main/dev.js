@@ -477,6 +477,7 @@ $(document).ready(function() {
     $(document).delegate(".btn-show-login",'click',function(){
         $("#modalLogin").modal('show');
     });
+    $(".mytooltip").tooltip();
     $("#formLogin").on('submit',function(e){
         var formData = new FormData(this);
         e.preventDefault();
