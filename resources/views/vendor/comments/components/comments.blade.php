@@ -69,7 +69,7 @@
         <div class="card-body">
             <h5 class="card-title">Thông báo</h5>
             <p class="card-text text-info">Bạn phải đăng nhập để viết bình luận.</p>
-            <a href="{{ route('web.auth.login') }}?redirect={{$showcomment}}" class="btn btn-primary">Đăng nhập</a>
+            <button class="btn btn-primary btn-show-login">Đăng nhập</button>
         </div>
     </div>
 @endauth

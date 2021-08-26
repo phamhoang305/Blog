@@ -14,9 +14,9 @@
                                             <tr class="dark">
                                                 <th><a href="{{route('web.quiz.testlist.view')}}/{{$info->uniqid}}" class="btn btn-sm btn-block btn-outline-danger "><i class="fas fa-long-arrow-alt-left"></i> Quay lại</a></th>
                                                 @if (Auth::check())
-                                                <th><button  {{$count>0?'':'disabled'}}  data-uniqid="{{$info->testlist_uniqid}}" data-url="{{route('web.quiz.testdetail.view')}}" class="{{$count>0?'btn-test':''}} btn btn-sm btn-block btn-outline-info "><i class="fas fa-check"></i> Bắt đầu</button></th>
+                                                <th><button {{$count>0?'':'disabled'}}  data-uniqid="{{$info->testlist_uniqid}}" data-url="{{route('web.quiz.testdetail.view')}}" class="{{$count>0?'btn-test':''}} btn btn-sm btn-block btn-outline-info "><i class="fas fa-check"></i> Bắt đầu</button></th>
                                                 @else
-                                                <th><a href="{{ route('web.auth.login') }}?redirect=true" class="btn btn-sm btn-block btn-outline-info "><i class="fas fa-check"></i> Bắt đầu</a></th>
+                                                <th><button class="btn btn-sm btn-block btn-outline-info btn-show-login"><i class="fas fa-check"></i> Bắt đầu</button></th>
                                                 @endif
                                             </tr>
                                             <tr>

@@ -13,7 +13,7 @@
             <a href="" class="h3"><b>ĐĂNG KÝ</b></a>
           </div>
             <!-- /.card-header -->
-            <div class="card-body " >
+            <div class="card-body p-4" >
 
                 <div class="alertJS"></div>
                 <form id="formRegister">
@@ -32,17 +32,12 @@
                     <div class="form-group">
                         <button  data-url="{{route('web.auth.ajaxRegister')}}" type="submit" class="btn btn-info btn-flat btn-block buttonConfirm">Đăng ký</button>
                     </div>
-
+                    <div class="form-group">
+                        <button type="button" class="btn bg-navy btn-flat btn-block btn-show-login">Tôi đã có tài khoản</button>
+                    </div>
                 </form>
             </div>
-            <div class="card-footer">
-              <p class="mb-1">
-                <a href="{{route('web.auth.login')}}">Tôi đã có tài khoản </a>
-              </p>
-              <p class="mb-0">
-                <a href="{{route('web.auth.register')}}" class="text-center">Đăng ký thành viên mới</a>
-              </p>
-            </div>
+
           </div>
     </div>
 

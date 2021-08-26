@@ -30,7 +30,7 @@
         </tr>
     @else
         <tr>
-            <th colspan="4"><a href="{{ route('web.auth.login') }}?redirect=true" class="btn btn-danger btn-block"><i class="fa fa-user"></i> Đăng nhập</a></th>
+            <th colspan="4"><button class="btn btn-danger btn-block btn-show-login"><i class="fa fa-user"></i> Đăng nhập</button></th>
         </tr>
     @endif
 </table>

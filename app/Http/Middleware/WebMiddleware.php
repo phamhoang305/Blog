@@ -9,17 +9,8 @@ use Jenssegers\Agent\Agent;
 use App\Models\AppSession;
 class WebMiddleware
 {
-    public function handle($request, Closure $next)
+    public function handle($Request, Closure $next)
     {
-        return $next($request);
-    }
-    protected function isResponseObject($response)
-    {
-        return is_object($response) && $response instanceof Response;
-    }
-
-    protected function isHtmlResponse(Response $response)
-    {
-        return strtolower(strtok($response->headers->get('Content-Type'), ';')) === 'text/html';
+        return $next($Request);
     }
 }

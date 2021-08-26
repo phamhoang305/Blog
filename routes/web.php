@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-\
+
 Route::post("change-dark-mode","LoginController@changeDarkMode")->name('web.dark.mode');
 Route::get("forgot","LoginController@forgot")->name('web.forgot.index');
 Route::post("forgot","LoginController@postForgot")->name('web.forgot.index');

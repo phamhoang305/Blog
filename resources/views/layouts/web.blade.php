@@ -23,8 +23,8 @@
             <br>
             <div class="container">
                 <section class="content">
-                        @if (session('status'))
-                            <div class="alert alert-warning text-small alert-dismissible" role="alert"> <i class="icon fas fa-exclamation-triangle"></i> {{session('status')}}
+                        @if (session('status_login'))
+                            <div class="alert alert-danger text-small alert-dismissible" role="alert"> <i class="icon fas fa-exclamation-triangle"></i> {{session('status_login')}}
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
                             </div>
                         @endif
@@ -38,6 +38,7 @@
             @yield('web')
         </div>
         @include('web.includes.footer')
+        @include('web.includes.modalLogin')
     </div>
     @include('web.includes.script')
     @yield('runJS')

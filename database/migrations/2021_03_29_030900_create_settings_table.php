@@ -23,7 +23,7 @@ class CreateSettingsTable extends Migration
             $table->text('des')->nullable();
             $table->text('keywords')->nullable();
             $table->text('about')->nullable();
-            $table->string('darkMode',3)->nullable();
+            $table->string('darkMode',3)->nullable()->default('on');
             $table->string('MAIL_DRIVER')->nullable();
             $table->string('MAIL_HOST')->nullable();
             $table->string('MAIL_PORT')->nullable();

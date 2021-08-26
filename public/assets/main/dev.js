@@ -474,6 +474,39 @@ if($("div").hasClass("listLoading")) {
 }
 $(document).ready(function() {
     $.ajaxSetup({ headers: { "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content") } });
+    $(".btn-show-login").on('click',function(){
+        $("#modalLogin").modal('show');
+    });
+    $("#formLogin").on('submit',function(e){
+        var formData = new FormData(this);
+        e.preventDefault();
+        $("#alertJS").empty();
+        buttonloading("#buttonLogin",true);
+        $.ajax({
+            url:$("#buttonLogin").attr('data-url'),
+            type: "POST",
+            data:formData,
+            dataType:'JSON',
+            processData: false,
+            contentType: false,
+            success: function(data){
+                if(data.status === 'success'){
+                        buttonloading("#buttonLogin",false);
+                        return location.reload();
+                }else if(data.status === 'error'){
+                        buttonloading("#buttonLogin",false);
+                        $("#alertJS").html(alertJS(data.msg,'danger'));
+                }else{
+                        buttonloading("#buttonLogin",false);
+                        $("#alertJS").html(alertJS("Máy chủ không thể thực hiện đăng nhập!",'danger'));
+                    }
+            },
+            error: function(er){
+                    buttonloading("#buttonLogin",false);
+                    $("#alertJS").html(alertJS("Máy chủ không thể thực hiện đăng nhập!",'danger'));
+            }
+        });
+    });
     $('.count').each(function () {
         $(this).prop('Counter', 0).animate({
                 Counter: $(this).text()

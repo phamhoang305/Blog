@@ -49,15 +49,6 @@
                 @endif
           </li>
           @endforeach
-          {{-- @foreach (getPagesHeader() as $item)
-          <li class="nav-item">
-              @if ($item->page_link)
-                <a href="{{$item->page_link}}"  {{$item->page_link_type=='newPage'?('target="_blank"'):''}} class="nav-link">{{ $item->post_title }}</a>
-              @else
-                <a href="{{route('web.posts.index',$item->post_slug)}}" class="nav-link">{{ $item->post_title }}</a>
-              @endif
-          </li>
-          @endforeach --}}
         </ul>
       </div>
       <!-- Right navbar links -->
@@ -96,7 +87,7 @@
         @else
             @if (setting()->user_login_register_status=='on')
             <li class="nav-item">
-                <a class="nav-link"  href="{{ route('web.auth.login') }}" role="button">
+                <a class="nav-link btn-show-login" href="javascript::void(0)" role="button">
                     <i class="fas fa-sign-in-alt"></i> Đăng nhập</a>
                 </a>
             </li>
