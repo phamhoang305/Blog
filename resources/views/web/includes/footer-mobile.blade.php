@@ -26,14 +26,14 @@
 		</a>
         @else
             @if (setting()->user_login_register_status=='on')
-                <a href="{{ route('web.auth.login') }}" class="tab-link show-_login"> <i class="fa fa-user-circle icon" style="color:#a676b8;"></i>
+                <a href="javascript:void(0)" class="tab-link show-_login btn-show-login"> <i class="fa fa-user-circle icon" style="color:#a676b8;"></i>
                     <span class="foo_tab_menu-label">Đăng nhập</span>
                 </a>
             @endif
         @endif
 	</div>
 </div>
-<a id="back-to-top" href="javascript::void(0)" class="btn btn-danger back-to-top" role="button" aria-label="Scroll to top">
+<a id="back-to-top" href="javascript:void(0)" class="btn btn-danger back-to-top" role="button" aria-label="Scroll to top">
     <i class="fas fa-chevron-up"></i>
 </a>
 

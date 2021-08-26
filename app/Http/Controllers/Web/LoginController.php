@@ -22,44 +22,6 @@ class LoginController extends Controller
     ){
         $this->AuthRepositories = $AuthRepositories;
     }
-    public function getLogin(Request $request)
-    {
-        if(isset($request->redirect)){
-            if(!$request->session()->has('url')){
-                $request->session()->put('url',url()->previous()."#".$request->redirect);
-            }
-        }
-        SEOTools::setTitle("Đăng nhập");
-        SEOTools::setDescription(setting()->des);
-        SEOMeta::addKeyword(setting()->keywords);
-        SEOTools::opengraph()->setUrl(\URL::current());
-        SEOMeta::addMeta('article:published_time', setting()->created_at, 'property');
-        SEOMeta::addMeta('article:section',setting()->name, 'property');
-        OpenGraph::addProperty("site_name",setting()->name);
-        OpenGraph::addProperty('locale','vi');
-        if(\File::exists(public_path(setting()->seoImage))&&setting()->seoImage!=null){
-            $img =   asset(setting()->seoImage);
-            $image = getimagesize(public_path(setting()->seoImage));
-        }else{
-            $img = asset('assets/images/defaults/photos-icon.png');
-            $image = getimagesize(public_path('assets/images/defaults/photos-icon.png'));
-        }
-        OpenGraph::addProperty('image',($img));
-        OpenGraph::addProperty('image:secure_url',($img));
-        OpenGraph::addProperty("twitter:image",($img));
-        OpenGraph::addProperty("image:width",$image[0]);
-        OpenGraph::addProperty("image:height",$image[1]);
-        OpenGraph::addProperty('url',url()->current());
-        OpenGraph::addProperty('WebSite:published_time', setting()->created_at);
-        OpenGraph::addProperty('WebSite:modified_time', setting()->updated_at);
-        OpenGraph::addProperty("twitter:site", setting()->name);
-        OpenGraph::addProperty("twitter:title",setting()->name);
-        JsonLd::setTitle(setting()->title);
-        JsonLd::setDescription(setting()->des);
-        JsonLd::setType('WebSite');
-        JsonLd::addImage(($img));
-        return view('web.pages.auth.login');
-    }
     public function ajaxLogin(Request $request)
     {
         $url = route('web.home.index');

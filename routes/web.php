@@ -45,7 +45,6 @@ Route::group(['prefix' => 'tools'], function () {
     });
     Route::group(['prefix' => 'login' ], function () {
         Route::group(['middleware' => ['CheckPageLogin','CheckStatusLoginRegister']], function () {
-            Route::get("","LoginController@getLogin")->name('web.auth.login');
             Route::post("ajaxLogin","LoginController@ajaxLogin")->name('web.auth.ajaxLogin');
         });
         Route::get("ajaxLogout","LoginController@getLogout")->name('web.auth.logout');

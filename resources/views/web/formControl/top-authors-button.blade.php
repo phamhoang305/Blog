@@ -33,6 +33,6 @@
     @endif
 @else
     @if (setting()->sidebar_top_author_status=='on')
-        <a href="{{route('web.auth.login')}}" class="btn btn-outline-info btn-xs float-right"> <i class=" fa fa-user-plus"></i>  Follow  </a>
+        <a href="javascript:void(0)" class="btn btn-outline-info btn-xs float-right btn-show-login"> <i class=" fa fa-user-plus"></i>  Follow  </a>
     @endif
 @endif

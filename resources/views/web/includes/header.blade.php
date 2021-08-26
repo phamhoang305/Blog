@@ -87,7 +87,7 @@
         @else
             @if (setting()->user_login_register_status=='on')
             <li class="nav-item">
-                <a class="nav-link btn-show-login" href="javascript::void(0)" role="button">
+                <a class="nav-link btn-show-login" href="javascript:void(0)" role="button">
                     <i class="fas fa-sign-in-alt"></i> Đăng nhập</a>
                 </a>
             </li>

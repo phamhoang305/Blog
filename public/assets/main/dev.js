@@ -474,7 +474,7 @@ if($("div").hasClass("listLoading")) {
 }
 $(document).ready(function() {
     $.ajaxSetup({ headers: { "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content") } });
-    $(".btn-show-login").on('click',function(){
+    $(document).delegate(".btn-show-login",'click',function(){
         $("#modalLogin").modal('show');
     });
     $("#formLogin").on('submit',function(e){

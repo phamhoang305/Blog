@@ -59,11 +59,11 @@ class SocialController extends Controller
     }
     protected function sendUpdatePhoneNumber()
     {
-        return redirect()->route('web.user.profile')->with('status','Vui lòng cập nhật số điện thoại !');
+        return redirect()->route('web.user.profile')->with('status_login','Vui lòng cập nhật số điện thoại !');
     }
     protected function sendFailedResponse($msg = null)
     {
-        return redirect()->back()->with('status', $msg ?: 'Unable to login, try with another provider to login.');
+        return redirect()->back()->with('status_login', $msg ?: 'Unable to login, try with another provider to login.');
     }
     protected function loginOrCreateAccount($providerUser, $driver)
     {
