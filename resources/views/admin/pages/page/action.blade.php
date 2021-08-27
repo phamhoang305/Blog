@@ -132,6 +132,6 @@
 <script src="{{asset('assets/themes/plugins/highlight/highlight.min.js')}}"></script>
 <script src="{{asset('assets/themes/plugins/quill/quill.js')}}"></script>
 <script src="{{asset('assets/themes/plugins/tinymce/tinymce.min.js')}}"></script>
-<script src="{{asset('assets/admin/page/page.js')}}"></script>
+<script src="{{asset('assets/admin/page/page.js')}}?v={{uniqid()}}"></script>
 <script>var page = new page();page.datas={}page.init();</script>
 @endsection

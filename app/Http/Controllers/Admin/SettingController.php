@@ -22,7 +22,7 @@ class SettingController extends Controller
 
         SEOTools::setTitle("Cài đặt chung");
         SEOTools::opengraph()->setUrl(\URL::current());
-        return view('admin.pages.setting.action');
+        return view('admin.pages.setting.setting');
     }
     public function getMail(Request $request)
     {

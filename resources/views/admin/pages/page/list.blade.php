@@ -85,7 +85,7 @@
           </div>
 @endsection
 @section('runJS')
-<script src="{{asset('assets/admin/page/list.js')}}"></script>
+<script src="{{asset('assets/admin/page/list.js')}}?v={{uniqid()}}"></script>
 <script>
    var page = new page();
    page.init();

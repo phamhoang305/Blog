@@ -16,7 +16,10 @@ Route::get("forgot","LoginController@forgot")->name('web.forgot.index');
 Route::post("forgot","LoginController@postForgot")->name('web.forgot.index');
 Route::get("change-password","LoginController@getChangePassWord")->name('web.forgot.changePassWord');
 Route::post("change-password","LoginController@postChangePassWord")->name('web.forgot.changePassWord');
-
+Route::get('clear-cache', function() {
+    $cache = Artisan::call('cache:clear');
+    return json_encode(array('status'=>'success','msg'=>'Làm mới thành công'));
+})->name('web.clear.cache');
 Route::group(['prefix' => 'tools'], function () {
     Route::get("/","UtilityController@index")->name('web.tools.index');
     Route::group(['prefix' => 'css-gradient'], function () {

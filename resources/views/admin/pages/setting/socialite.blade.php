@@ -115,7 +115,7 @@
 </style>
 @endsection
 @section('runJS')
-<script src="{{asset('assets/admin/setting/setting.js')}}"></script>
+<script src="{{asset('assets/admin/setting/setting.js')}}?v={{uniqid()}}"></script>
 <script>
    var setting = new setting();
    setting.datas={

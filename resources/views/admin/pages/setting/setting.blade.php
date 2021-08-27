@@ -96,9 +96,13 @@
                                                         <label for="route_login" >Đường dẫn đăng nhập hệ thống</label>
                                                         <input type="text" class="form-control form-control-sm" id="route_login" name="route_login" value="{{setting()->route_login}}" placeholder="Tên đương dẫn đăng nhập ... ">
                                                     </div>
+
                                                     <div class="form-group ">
                                                         <label for="cache_seconds" >Thời gian lưu Cache (Giây)</label>
-                                                        <input type="number" class="form-control form-control-sm" id="cache_seconds" name="cache_seconds" value="{{setting()->cache_seconds}}" placeholder="Số giây cache ... ">
+                                                        <div class="input-group group-sm">
+                                                            <input type="number" class="form-control " id="cache_seconds" name="cache_seconds" value="{{setting()->cache_seconds}}" placeholder="Số giây cache ... ">
+                                                            <button type="button" data-url={{ route('web.clear.cache') }} id="buttonClearCache" class="btn bg-navy btn-flat">Làm mới cache</button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -153,9 +157,9 @@
                                             <label>ICON</label>
                                             <div  class="post-select-image-container"  id="change_icon">
                                                 <label class="btn-select-image"  >
-                                                   
+
                                                     <img id="icon_review"  height="100%" width="100%" src="{{getIcon()}}"/>
-                                                
+
                                                     <div class="btn-select-image-inner">
                                                     </div>
                                                 </label>
@@ -164,9 +168,9 @@
                                             <label>LOGO</label>
                                             <div  class="post-select-image-container" id="change_logo">
                                                 <label class="btn-select-image" >
-                                                
+
                                                     <img id="logo_review" height="100%"  width="100%" src="{{getLogo()}}"/>
-                                                   
+
                                                     <div class="btn-select-image-inner">
                                                     </div>
                                                 </label>
@@ -206,7 +210,7 @@
 </style>
 @endsection
 @section('runJS')
-<script src="{{asset('assets/admin/setting/setting.js')}}"></script>
+<script src="{{asset('assets/admin/setting/setting.js')}}?v={{uniqid()}}"></script>
 <script>
    var setting = new setting();
    setting.datas={

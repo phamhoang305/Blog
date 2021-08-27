@@ -15,7 +15,7 @@
     }
     </style>
 </head>
-<body class="login-page">
+<body class="login-page {{ setting()->darkMode=='on'?'dark-mode':'' }}">
 <div class="login-box">
     <div class="card card-outline card-dark">
       <div class="card-header text-center">
@@ -42,10 +42,10 @@
                 <input type="hidden" class="form-control"  value="{{ $token }}" id="token" name="token" placeholder="...">
                 <button type="submit" id="formChangePass" class="btn btn-info btn-block" >Gửi</button>
             </div>
+            <div class="form-group">
+                <a href="{{ redirect()->route('web.home.index') }}" class="btn btn-danger btn-block" ><i class="fas fa-home"></i> Quay lại</a>
+            </div>
         </form>
-    </div>
-    <div class="card-footer text-center">
-        <strong>Copyright &copy; 2020-{{ date('Y') }} <a href="{{ route('web.home.index') }}">{{ setting()->name }}</a>.</strong> All rights reserved.
     </div>
     </div>
   </div>

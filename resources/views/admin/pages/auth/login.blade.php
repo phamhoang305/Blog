@@ -9,7 +9,7 @@
     @include('includes.icon')
     @include('admin.includes.css')
 </head>
-<body class="hold-transition login-page">
+<body class="hold-transition login-page {{ setting()->darkMode=='on'?'dark-mode':'' }}">
     <div class="login-box">
         <div class="card card-outline card-primary">
             <div class="card-header text-center">

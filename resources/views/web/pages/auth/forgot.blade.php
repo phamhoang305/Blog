@@ -7,10 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     {!! SEO::generate() !!}
     @include('includes.icon')
+    <link rel="stylesheet" href="{{asset('assets/themes/plugins/fontawesome-free/css/all.min.css')}}?v={{ uniqid() }}">
     @include('web.includes.css')
     @yield('runCSS')
 </head>
-<body class="login-page">
+<body class="login-page {{ setting()->darkMode=='on'?'dark-mode':'' }}">
 <div class="login-box">
     <!-- /.login-logo -->
     <div class="card card-outline card-dark">
@@ -36,7 +37,10 @@
                 <input type="email" class="form-control" required name="email" placeholder="Nhập email của bạn .... ">
             </div>
             <div class="form-group">
-                <button type="submit" class="btn btn-info btn-block" >Gửi</button>
+                <button type="submit" class="btn btn-info btn-block"><i class="far fa-share-square"></i>  Gửi </button>
+            </div>
+            <div class="form-group">
+                <a href="{{ redirect()->route('web.home.index') }}" class="btn btn-danger btn-block" ><i class="fas fa-home"></i> Quay lại</a>
             </div>
         </form>
     </div>

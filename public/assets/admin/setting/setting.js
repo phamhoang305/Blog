@@ -28,11 +28,11 @@ function setting(){
         $("#saveMail").on('click',function(e){
             saveMail("#saveMail","saveMail");
         });
-        function saveMail(buton,type){
+        function saveMail(button,type){
             $("#alertJS,#alertJSTestMail").empty();
             var formData = new FormData($("#formAction")[0]);
             formData.append('type',type);
-            buttonloading(buton,true);
+            buttonloading(button,true);
             $.ajax({
                 url:$("#formAction").attr('action'),
                 type: "POST",
@@ -42,7 +42,7 @@ function setting(){
                 contentType: false,
                 success: function(data){
                     if(data.status === 'success'){
-                            buttonloading(buton,false);
+                            buttonloading(button,false);
                             Toast.fire({
 								icon: data.status,
 								title: data.msg
@@ -54,7 +54,7 @@ function setting(){
                                 $("#alertJSTestMail").html(alertJS(data.msg,'success'));
                             }
                     }else if(data.status === 'error'){
-                            buttonloading(buton,false);
+                            buttonloading(button,false);
                             if(type=='saveMail'){
                                 Toast.fire({
                                     icon: data.status,
@@ -65,20 +65,20 @@ function setting(){
                                 $("#alertJSTestMail").html(alertJS(data.msg,'danger'));
                             }
                     }else{
-                        buttonloading(buton,false);
+                        buttonloading(button,false);
                     }
                 },
                 error: function(er){
-                    buttonloading(buton,false);
+                    buttonloading(button,false);
                     _showError(er,"#formAction");
                 }
             });
         }
-        function saveSetting(buton,type){
+        function saveSetting(button,type){
             $("#alertJS,#alertJSTestMail").empty();
             var formData = new FormData($("#formAction")[0]);
             formData.append('type',type);
-            buttonloading(buton,true);
+            buttonloading(button,true);
             $.ajax({
                 url:$("#formAction").attr('action'),
                 type: "POST",
@@ -88,7 +88,7 @@ function setting(){
                 contentType: false,
                 success: function(data){
                     if(data.status === 'success'){
-                            buttonloading(buton,false);
+                            buttonloading(button,false);
                             Toast.fire({
 								icon: data.status,
 								title: data.msg
@@ -96,18 +96,18 @@ function setting(){
                             _showError("","#formAction");
                             location.reload();
                     }else if(data.status === 'error'){
-                            buttonloading(buton,false);
+                            buttonloading(button,false);
                             Toast.fire({
                                 icon: data.status,
                                 title: data.msg
                             });
                             $("#alertJS").html(alertJS(data.msg,'danger'));
                     }else{
-                        buttonloading(buton,false);
+                        buttonloading(button,false);
                     }
                 },
                 error: function(er){
-                    buttonloading(buton,false);
+                    buttonloading(button,false);
                     _showError(er,"#formAction");
                 }
             });
@@ -124,9 +124,9 @@ function setting(){
             var button = this;
             saveSocialite(button);
         });
-        function saveSocialite(buton){
+        function saveSocialite(button){
             var formData = new FormData($("#formAction")[0]);
-            buttonloading(buton,true);
+            buttonloading(button,true);
             $.ajax({
                 url:$("#formAction").attr('action'),
                 type: "POST",
@@ -136,7 +136,7 @@ function setting(){
                 contentType: false,
                 success: function(data){
                     if(data.status === 'success'){
-                            buttonloading(buton,false);
+                            buttonloading(button,false);
                             Toast.fire({
 								icon: data.status,
 								title: data.msg
@@ -144,20 +144,42 @@ function setting(){
                             _showError("","#formAction");
                             location.reload();
                     }else if(data.status === 'error'){
-                            buttonloading(buton,false);
+                            buttonloading(button,false);
                             Toast.fire({
                                 icon: data.status,
                                 title: data.msg
                             });
                     }else{
-                        buttonloading(buton,false);
+                        buttonloading(button,false);
                     }
                 },
                 error: function(er){
-                    buttonloading(buton,false);
+                    buttonloading(button,false);
                     _showError(er,"#formAction");
                 }
             });
         }
+        $("#buttonClearCache").on('click',function(e){
+            var button = this;
+            buttonloading(button,true);
+            $.ajax({
+                url:$(button).data('url'),
+                type: "GET",
+                dataType:'JSON',
+                success: function(data){
+                    buttonloading(button,false);
+                    Toast.fire({
+						icon: data.status,
+						title: data.msg
+				    });
+
+
+                },
+                error: function(er){
+                    buttonloading(button,false);
+                }
+            });
+        });
+
     }
 }
