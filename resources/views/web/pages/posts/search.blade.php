@@ -7,7 +7,7 @@
                 <div class="col-md-12">
                     <div class="card card-dark ">
                         <div class="card-header ">
-                          <h3 class="card-title text-center"><i class="fa fa-search"></i> TÌM KIẾM </h3>
+                          <h3 class="card-title text-center"><i class="fa fa-search"></i> Tìm kiếm </h3>
                           <div class="card-tools d-none d-sm-inline-block">
 
                           </div>
@@ -18,7 +18,7 @@
                                 <div class="row">
                                     <div class="col-md-10">
                                         <div class="form-group">
-                                            <input class="form-control" placeholder="Tìm kiếm ..." value="{{ $qSearch }}" name="q"/>
+                                            <input class="form-control" placeholder="Tìm kiếm theo từ khóa ..." value="{{ $qSearch }}" name="q"/>
                                         </div>
                                     </div>
                                     <div class="col-md-2">
@@ -32,13 +32,13 @@
                     </div>
                     <div class="card card-dark ">
                         <div class="card-header ">
-                          <h3 class="card-title text-center"><i class="fa fa-list"></i> KẾT QUẢ TÌM KIẾM @if(count($posts)>0) ({{ count($posts) }}) @endif </h3>
+                          <h3 class="card-title text-center"><i class="fa fa-list"></i> Kết quả tìm kiếm @if(count($posts)>0) ({{ count($posts) }}) @endif </h3>
                           <div class="card-tools d-none d-sm-inline-block">
 
                           </div>
                         </div>
                         <!-- /.card-header -->
-                        <div class="card-body p-0">
+                        <div class="card-body p-1">
                             @include('web.pages.posts.includes.post-item')
                         </div>
                         <div class="card-footer ">
