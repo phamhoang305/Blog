@@ -114,7 +114,7 @@ class PostsController extends Controller
         SEOMeta::addMeta('article:section',$post->cate_name, 'property');
         OpenGraph::addProperty("site_name",setting()->name);
         OpenGraph::addProperty('locale','vi');
-        if(\File::exists(public_path($post->thumbnail)&&$post->thumbnail!=null)){
+        if(\File::exists(public_path($post->thumbnail))&&$post->thumbnail!=null){
             $post_image =   asset($post->thumbnail);
             $image = getimagesize(public_path($post->thumbnail));
         }else{
