@@ -30,6 +30,10 @@ Route::group(['prefix' => 'tools'], function () {
         Route::get("/","UtilityController@gethtmltojsxindex")->name('web.htmltojsx.index');
         Route::post("page","UtilityController@gethtmltojsxpage")->name('web.htmltojsx.page');
     });
+    Route::group(['prefix' => 'file-to-base64'], function () {
+        Route::get("/","UtilityController@filetobase64")->name('web.filetobase64.index');
+    });
+    
 });
 
     Route::group(['prefix' => '/widget'], function () {

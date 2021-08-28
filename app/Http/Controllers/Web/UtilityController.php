@@ -86,4 +86,37 @@ class UtilityController extends Controller
         SEOTools::opengraph()->setUrl(\URL::current());
         return view("web.utility.htmltojsx.page");
     }
+    public function filetobase64(Request $request)
+    {
+        SEOTools::setTitle("File to Base64 - Công cụ");
+        SEOTools::setDescription('Chuyển file sang base64 online');
+        SEOMeta::addKeyword('');
+        SEOTools::opengraph()->setUrl(\URL::current());
+        SEOMeta::addMeta('article:published_time', setting()->created_at, 'property');
+        SEOMeta::addMeta('article:section',setting()->name, 'property');
+        OpenGraph::addProperty("site_name",setting()->name);
+        OpenGraph::addProperty('locale','vi');
+        if(\File::exists(public_path(setting()->seoImage))&&setting()->seoImage!=null){
+            $img =   asset(setting()->seoImage);
+            $image = getimagesize(public_path(setting()->seoImage));
+        }else{
+            $img = asset('assets/images/defaults/photos-icon.png');
+            $image = getimagesize(public_path('assets/images/defaults/photos-icon.png'));
+        }
+        OpenGraph::addProperty('image',asset($img));
+        OpenGraph::addProperty('image:secure_url',asset($img));
+        OpenGraph::addProperty("twitter:image",asset($img));
+        OpenGraph::addProperty("image:width",$image[0]);
+        OpenGraph::addProperty("image:height",$image[1]);
+        OpenGraph::addProperty('url',url()->current());
+        OpenGraph::addProperty('WebSite:published_time', setting()->created_at);
+        OpenGraph::addProperty('WebSite:modified_time', setting()->updated_at);
+        OpenGraph::addProperty("twitter:site", setting()->name);
+        OpenGraph::addProperty("twitter:title",setting()->name);
+        JsonLd::setTitle(setting()->title);
+        JsonLd::setDescription(setting()->des);
+        JsonLd::setType('WebSite');
+        JsonLd::addImage(asset($img));
+        return view("web.utility.filetobase64.index");
+    }
 }

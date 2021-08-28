@@ -715,11 +715,11 @@ $(document).ready(function() {
         showDone();
     }
     var colors = ['#20c997','#20c997','#e83e8c','#dc3545',];
-    $('.text-sm .main-header .nav-link').mouseenter(function() {
+    $('.text-sm .main-header .nav-link,.bg-rand').mouseenter(function() {
         var rand = colors[Math.floor(Math.random() * colors.length)];
         $(this).css('background-color', rand);
     });
-    $('.text-sm .main-header .nav-link').mouseleave(function() {
+    $('.text-sm .main-header .nav-link,.bg-rand').mouseleave(function() {
         $(this).css('background-color', '');
     });
 

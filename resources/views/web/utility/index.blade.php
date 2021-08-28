@@ -10,53 +10,34 @@
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-sm-12 col-lg-3 col-md-6">
-                                  <!-- small box -->
-                                  <div class="small-box bg-info">
-                                    <div class="inner">
-                                      <h3 class="tool">Css Gradien</h3>
+                                <div class="col-sm-12 col-lg-4 col-md-4">
+                                  <a href="{{route('web.css_gradien.index')}}">
+                                  <div class="small-box bg-success p-2 bg-rand">
+                                    <div class="inner text-center">
+                                      <h5 class="tool">Css Gradien</h5>
                                     </div>
-                                    <div class="icon">
-                                        <i class="fas fa-eye"></i>
-                                    </div>
-                                    <a href="{{route('web.css_gradien.index')}}" class="small-box-footer">Xem chi tiết <i class="fas fa-css-right"></i></a>
                                   </div>
+                                  </a>
                                 </div>
                                 <!-- ./col -->
-                                <div class="col-sm-12 col-lg-3 col-md-6">
+                                <div class="col-sm-12 col-lg-4 col-md-4">
                                   <!-- small box -->
-                                  <div class="small-box bg-success">
-                                    <div class="inner">
-                                        <h3 class="tool">Jsx to Html</h3>
+                                  <a href="{{route('web.htmltojsx.index')}}">
+                                    <div class="small-box bg-info p-2 bg-rand">
+                                      <div class="inner text-center">
+                                          <h5 class="tool">Jsx to Html</h5>
+                                      </div>
                                     </div>
-                                    <div class="icon">
-                                        <i class="fas fa-eye"></i>
-                                    </div>
-                                    <a href="{{route('web.htmltojsx.index')}}" class="small-box-footer">Xem chi tiết <i class="fas fa-css-right"></i></a>
-                                  </div>
+                                  </a>
                                 </div>
-
-                                <div class="col-sm-12 col-lg-3 col-md-6">
-                                  <div class="small-box bg-warning">
-                                    <div class="inner">
-                                        <h3 class="tool"> Xml to Json</h3>
+                                <div class="col-sm-12 col-lg-4 col-md-4">
+                                  <a href="{{route('web.filetobase64.index')}}">
+                                  <div class="small-box bg-danger p-2 bg-rand">
+                                    <div class="inner text-center">
+                                        <h5 class="tool">File to Base64</h5>
                                     </div>
-                                    <div class="icon">
-                                      <i class="ion ion-person-add"></i>
-                                    </div>
-                                    <a href="#" class="small-box-footer">Xem chi tiết <i class="fas fa-css-right"></i></a>
                                   </div>
-                                </div>
-                                <div class="col-sm-12 col-lg-3 col-md-6">
-                                  <div class="small-box bg-danger">
-                                    <div class="inner">
-                                        <h3 class="tool">Image to Base64</h3>
-                                    </div>
-                                    <div class="icon">
-                                      <i class="ion ion-pie-graph"></i>
-                                    </div>
-                                    <a href="#" class="small-box-footer">Xem chi tiết <i class="fas fa-css-right"></i></a>
-                                  </div>
+                                  </a>
                                 </div>
                               </div>
                             </div>
