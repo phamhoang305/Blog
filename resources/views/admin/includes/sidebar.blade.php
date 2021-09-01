@@ -1,4 +1,4 @@
-<aside class="main-sidebar sidebar-dark-admin elevation-4 top-bg">
+<aside class="main-sidebar sidebar-dark-admin elevation-4 ">
     <!-- Brand Logo -->
     <a href="{{route('web.home.index')}}" class="brand-link text-center">
       <span class="brand-text font-weight-dark">{{ setting()->name }}</span>
