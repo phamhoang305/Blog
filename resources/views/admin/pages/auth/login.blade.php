@@ -9,7 +9,7 @@
     @include('includes.icon')
     @include('admin.includes.css')
 </head>
-<body class="hold-transition login-page {{ setting()->darkMode=='on'?'dark-mode':'' }}">
+<body class="hold-transition bg-color login-page {{ setting()->darkMode=='on'?'dark-mode':'' }}">
     <div class="login-box">
         <div class="card card-outline card-primary">
             <div class="card-header text-center">
@@ -33,7 +33,7 @@
                         <input type="password" name="password" value="" placeholder="Mật khẩu" class="form-control">
                     </div>
                     <div class="form-group">
-                        <button id="buttonLogin" data-url="{{route('admin.auth.ajaxLogin')}}" type="submit" class="btn btn-dark btn-flat btn-block">Đăng nhập</button>
+                        <button id="buttonLogin" data-url="{{route('admin.auth.ajaxLogin')}}" type="submit" class="btn btn-info btn-flat btn-block">Đăng nhập</button>
                     </div>
                     @if (setting()->github_status=='on'||setting()->google_status=='on'||setting()->facebook_status=='on')
                     <div class="form-group">
@@ -70,11 +70,7 @@
     @include('admin.includes.script')
     <script src="{{asset('assets/web/auth/auth.js')}}"></script>
     <script>
-    var auth = new auth();
-    auth.datas={
-
-    }
-    auth.init();
+    var auth = new auth(); auth.datas={}auth.init();
     </script>
 </body>
 </html>

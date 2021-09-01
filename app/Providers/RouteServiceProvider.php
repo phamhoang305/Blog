@@ -39,7 +39,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         $this->mapApiRoutes();
         $this->mapAdminRoutes();
-        $this->mapStorageRoutes();
+        $this->mapAuthRoutes();
         $this->mapWebRoutes();
 
 
@@ -59,9 +59,9 @@ class RouteServiceProvider extends ServiceProvider
              ->namespace($this->namespaceAdmin)
              ->group(base_path('routes/admin.php'));
     }
-    protected function mapStorageRoutes()
+    protected function mapAuthRoutes()
     {
-        Route::namespace($this->namespace)->group(base_path('routes/storage.php'));
+        Route::middleware(['web'])->namespace($this->namespaceAdmin)->group(base_path('routes/auth.php'));
     }
     protected function mapWebRoutes()
     {

@@ -22,7 +22,7 @@
                                     </div>
                                     <div class="col-md-2">
                                         <div class="form-group">
-                                           <select id="type" name="type" class="select2">
+                                           <select id="type" name="type" class="select2 form-control form-control-sm">
                                                <option @isset($type){{$type==''?'selected':''}}@endisset   value="">- Tất cả  thành viên - </option>
                                                <option @isset($type){{$type=='userAdminCreate'?'selected':''}}@endisset  value="userAdminCreate">Hệ thống</option>
                                                <option @isset($type){{$type=='userCreate'?'selected':''}}@endisset  value="userCreate">Thành viên</option>
@@ -32,7 +32,7 @@
 
                                     <div id="showType" class="col-md-2 {{$type=='userAdminCreate'?'':'d-none'}} ">
                                         <div class="form-group">
-                                           <select name="role" class="select2">
+                                           <select name="role" class="select2 form-control form-control-sm">
                                                <option value="">- Tất cả vai trò -</option>
                                                @foreach (getRoles() as $item)
                                                     <option @isset($role){{$role==$item->roleID?'selected':''}}@endisset value="{{$item->id}}">{{$item->role_name}}</option>

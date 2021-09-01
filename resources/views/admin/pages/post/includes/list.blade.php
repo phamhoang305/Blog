@@ -81,7 +81,7 @@
                             </label>
                         </div>
                     </td>
-                    <td class="text-center"><img height="60px" src="{{$post_image}}"></td>
+                    <td class="text-center"><img height="60px" class="profile-user-img" src="{{$post_image}}"></td>
                     <td>
                         <a target="_blank" href="{{ $url }}" class="product-title"> {{$item->post_title}} </a><br>
                         <span title="Tác giả" class="badge badge-default float-left"> <i class="fa fa-users"></i> {{$item->full_name}} </span><br>

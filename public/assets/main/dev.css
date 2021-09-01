@@ -344,6 +344,7 @@ i.icon {
 .post-select-image-container .btn-select-image {
     width: 100%;
     /* height: 200px; */
+    padding: 6px;
 }
 .btn-select-image {
     position: relative;
@@ -1289,4 +1290,7 @@ label {
 .dark-mode .ql-snow .ql-picker.ql-header .ql-picker-label::before, .ql-snow .ql-picker.ql-header .ql-picker-item::before {
     content: 'Normal';
     color: #fff;
+}
+.card {
+    border-radius: 5px;
 }

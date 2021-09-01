@@ -29,7 +29,7 @@
             @endphp
             <li class="item" id="itemAuthID{{ $item->userID }}">
                 <div class="product-img">
-                    <img src=" {{ $item->avatar }}" alt="{{ $item->full_name }}" class="img-size-50 img-thumbnail">
+                    <img src=" {{ $item->avatar }}" alt="{{ $item->full_name }}" class="img-size-50 profile-user-img">
                 </div>
                 <div class="product-info">
                     <a href="{{ route('web.user.index',$item->username)  }}" class="product-title">
