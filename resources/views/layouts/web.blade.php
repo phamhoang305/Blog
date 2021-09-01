@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html amp  lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
   	<meta name="csrf-token" content="{{ csrf_token() }}">
     <meta charset="UTF-8">
@@ -10,11 +10,13 @@
     <meta name="google-site-verification" content="vEPcZnk3Nv2QC9JjuZkJ4EiuqsTmn0oYj7eFvQHLPsw" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="sitemap" type="application/xml" href="{{asset('sitemap.xml')}}"/>
+    <link rel="amphtml" href="{{URL::current()}}" /> 
     {!! SEO::generate(true) !!}
     @include('includes.icon')
     <link rel="stylesheet" href="{{asset('assets/themes/plugins/fontawesome-free/css/all.min.css')}}?v={{ uniqid() }}">
     @include('web.includes.css')
     @yield('runCSS')
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
 </head>
 <body class="{{ setting()->darkMode=='on'?'dark-mode':'' }} layout-top-nav control-sidebar-slide-open layout-navbar-fixed layout-footer-fixed text-sm">
     <div class="wrapper">
