@@ -1,0 +1,11 @@
+{
+    "/mix.js.map": "/mix.js.map",
+    "/assets/themes/app/style.css": "/assets/themes/app/style.css",
+    "/assets/themes/app/style.min.css": "/assets/themes/app/style.min.css",
+    "/assets/themes/app/script.js": "/assets/themes/app/script.js",
+    "/assets/themes/app/script.min.js": "/assets/themes/app/script.min.js",
+    "/assets/main/main.css": "/assets/main/main.css",
+    "/assets/main/main.min.css": "/assets/main/main.min.css",
+    "/assets/main/main.js": "/assets/main/main.js",
+    "/assets/main/main.min.js": "/assets/main/main.min.js"
+}
