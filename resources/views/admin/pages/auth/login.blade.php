@@ -25,7 +25,7 @@
                         </div>
                         @endif
                     </div>
-                    <form id="formLogin">
+                    <form id="formAdLogin">
                     <div class="form-group">
                         <input type="text" name="username" value="" placeholder="Email or username" class="form-control">
                     </div>
@@ -33,7 +33,7 @@
                         <input type="password" name="password" value="" placeholder="Mật khẩu" class="form-control">
                     </div>
                     <div class="form-group">
-                        <button id="buttonLogin" data-url="{{route('admin.auth.ajaxLogin')}}" type="submit" class="btn btn-info btn-flat btn-block">Đăng nhập</button>
+                        <button id="ad_button_login" data-url="{{route('admin.auth.ajaxLogin')}}" data-urlSuccess="{{route('admin.dashboard.view')}}" type="submit" class="btn btn-info btn-flat btn-block _success">Đăng nhập</button>
                     </div>
                     @if (setting()->github_status=='on'||setting()->google_status=='on'||setting()->facebook_status=='on')
                     <div class="form-group">
@@ -70,7 +70,7 @@
     @include('admin.includes.script')
     <script src="{{asset('assets/web/auth/auth.js')}}"></script>
     <script>
-    var auth = new auth(); auth.datas={}auth.init();
+    var auth = new auth(); auth.datas={};auth.init();
     </script>
 </body>
 </html>

@@ -11,4 +11,3 @@ var _cate_slug = "@isset($post->cate_slug) {{$post->cate_slug}} @endisset";
 @endif
 
 
-

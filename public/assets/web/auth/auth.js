@@ -1,13 +1,14 @@
 function auth(){
     this.datas=null;
     this.init=function(){
-        $("#formLogin").on('submit',function(e){
+        $("#formAdLogin").on('submit',function(e){
             var formData = new FormData(this);
             e.preventDefault();
             $("#alertJS").empty();
-            buttonloading("#buttonLogin",true);
+            var ad_button_login = "#ad_button_login";
+            buttonloading(ad_button_login,true);
             $.ajax({
-                url:$("#buttonLogin").attr('data-url'),
+                url:$(ad_button_login).attr('data-url'),
                 type: "POST",
                 data:formData,
                 dataType:'JSON',
@@ -15,18 +16,15 @@ function auth(){
                 contentType: false,
                 success: function(data){
                     if(data.status === 'success'){
-                            buttonloading("#buttonLogin",false);
-                            return window.location.href=data.url;
-                    }else if(data.status === 'error'){
-                            buttonloading("#buttonLogin",false);
-                            $("#alertJS").html(alertJS(data.msg,'danger'));
+                        buttonloading(ad_button_login,false);
+                        return window.location.href=$(ad_button_login).attr('data-urlSuccess');
                     }else{
-                            buttonloading("#buttonLogin",false);
-                            $("#alertJS").html(alertJS("Máy chủ không thể thực hiện đăng nhập!",'danger'));
-                        }
+                        buttonloading(ad_button_login,false);
+                        $("#alertJS").html(alertJS(data.msg,'danger'));
+                    }
                 },
                 error: function(er){
-                        buttonloading("#buttonLogin",false);
+                        buttonloading(ad_button_login,false);
                         $("#alertJS").html(alertJS("Máy chủ không thể thực hiện đăng nhập!",'danger'));
                 }
             });
