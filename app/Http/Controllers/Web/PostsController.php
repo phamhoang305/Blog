@@ -161,7 +161,6 @@ class PostsController extends Controller
         if(\File::exists(public_path($cate->cate_icon))&&$cate->cate_icon!=null){
             $image = getimagesize(public_path($cate->cate_icon));
             $cate->cate_icon = $cate->img =   asset($cate->cate_icon);
-            
         }else{
             $cate->cate_icon =  $cate->img = asset('assets/images/defaults/photos-icon.png');
             $image = getimagesize(public_path('assets/images/defaults/photos-icon.png'));

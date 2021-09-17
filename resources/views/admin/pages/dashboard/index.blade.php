@@ -128,6 +128,42 @@
 
         </div>
         <div class="col-md-6">
+          <!-- USERS LIST -->
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Thành viên mới nhất</h3>
+
+              <div class="card-tools">
+                <span class="badge badge-danger">{{count($users)}} Thành viên mới</span>
+                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
+              </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body p-0">
+              <ul class="users-list clearfix">
+                  @foreach ($users as $item)
+                      @php if($item->avatar==''){$item->avatar = "https://www.gravatar.com/avatar/".md5($item->email)."jpg?s=64";}@endphp
+                      <li>
+                      <img class="img-size-50 " src="{{ $item->avatar }}" alt="User Image">
+                      <a class="users-list-name" href="#">{{ $item->full_name }}</a>
+                      <span class="users-list-date">{{ $item->created_at }}</span>
+                    </li>
+                  @endforeach
+
+              </ul>
+              <!-- /.users-list -->
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer text-center">
+              <a href="{{ route('admin.user.view') }}?type=userCreate">Xem tất cả thành viên</a>
+            </div>
+            <!-- /.card-footer -->
+          </div>
+          <!--/.card -->
+      </div>
+        <div class="col-md-6">
             <!-- USERS LIST -->
             <div class="card">
               <div class="card-header">
@@ -175,11 +211,11 @@
               </div>
               <!-- /.card-footer -->
             </div>
-            <div class="card">
+            
+            {{-- <div class="card">
                 <div class="card-header">
                   <h3 class="card-title">Truy cập gần đây</h3>
                 </div>
-                <!-- /.card-header -->
                 <div class="card-body p-0">
                   <table class="table table-bordered table-sm">
                       <thead>
@@ -209,50 +245,12 @@
                   </table>
                   <!-- /.users-list -->
                 </div>
-                <!-- /.card-body -->
                 <div class="card-footer text-center">
-                  {{-- <a href="{{ route('admin.contact.view') }}">Xem tất cả liên hệ</a> --}}
                 </div>
-                <!-- /.card-footer -->
-              </div>
+            </div> --}}
             <!--/.card -->
         </div>
-        <div class="col-md-6">
-            <!-- USERS LIST -->
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Thành viên mới nhất</h3>
-
-                <div class="card-tools">
-                  <span class="badge badge-danger">{{count($users)}} Thành viên mới</span>
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                    <i class="fas fa-minus"></i>
-                  </button>
-                </div>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body p-0">
-                <ul class="users-list clearfix">
-                    @foreach ($users as $item)
-                        @php if($item->avatar==''){$item->avatar = "https://www.gravatar.com/avatar/".md5($item->email)."jpg?s=64";}@endphp
-                        <li>
-                        <img class="img-size-50 " src="{{ $item->avatar }}" alt="User Image">
-                        <a class="users-list-name" href="#">{{ $item->full_name }}</a>
-                        <span class="users-list-date">{{ $item->created_at }}</span>
-                      </li>
-                    @endforeach
-
-                </ul>
-                <!-- /.users-list -->
-              </div>
-              <!-- /.card-body -->
-              <div class="card-footer text-center">
-                <a href="{{ route('admin.user.view') }}?type=userCreate">Xem tất cả thành viên</a>
-              </div>
-              <!-- /.card-footer -->
-            </div>
-            <!--/.card -->
-        </div>
+       
         <!-- /.col -->
       </div>
       <!-- ./row -->
