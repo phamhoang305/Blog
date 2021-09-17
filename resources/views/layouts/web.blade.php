@@ -13,10 +13,9 @@
     <link rel="amphtml" href="{{URL::current()}}" /> 
     {!! SEO::generate(true) !!}
     @include('includes.icon')
-    <link rel="stylesheet" href="{{asset('assets/themes/plugins/fontawesome-free/css/all.min.css')}}?v={{ uniqid() }}">
+    <link rel="stylesheet" type="text/css"href="{{asset('assets/themes/plugins/fontawesome-free/css/all.min.css')}}?v={{ uniqid() }}">
     @include('web.includes.css')
     @yield('runCSS')
-    <script async src="https://cdn.ampproject.org/v0.js"></script>
 </head>
 <body class="{{ setting()->darkMode=='on'?'dark-mode':'' }} layout-top-nav control-sidebar-slide-open layout-navbar-fixed layout-footer-fixed text-sm">
     <div class="wrapper">
