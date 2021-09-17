@@ -159,8 +159,9 @@ class PostsController extends Controller
         OpenGraph::addProperty("site_name",setting()->name);
         OpenGraph::addProperty('locale','vi');
         if(\File::exists(public_path($cate->cate_icon))&&$cate->cate_icon!=null){
-            $cate->cate_icon = $cate->img =   asset($cate->cate_icon);
             $image = getimagesize(public_path($cate->cate_icon));
+            $cate->cate_icon = $cate->img =   asset($cate->cate_icon);
+            
         }else{
             $cate->cate_icon =  $cate->img = asset('assets/images/defaults/photos-icon.png');
             $image = getimagesize(public_path('assets/images/defaults/photos-icon.png'));
