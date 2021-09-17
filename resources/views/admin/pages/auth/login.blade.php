@@ -68,7 +68,7 @@
         </div>
     </div>
     @include('admin.includes.script')
-    <script src="{{asset('assets/web/auth/auth.js')}}"></script>
+    <script src="{{asset('assets/web/auth/auth.js')}}?ver={{time()}}"></script>
     <script>
     var auth = new auth(); auth.datas={};auth.init();
     </script>
